@@ -1,10 +1,10 @@
 
-import './EventPage.scss';
+import './EventsPage.scss';
 import EventPreview from "../../Components/EventPreview/EventPreview";
 import axios from "axios";
 import {useEffect, useState} from 'react';
 
-function EventPage() {
+function EventsPage() {
 	// Here we get all the events...
 
 	const [events,setEvents] = useState([])
@@ -15,10 +15,8 @@ function EventPage() {
 		})
 	},[])
 
-	console.log(events)
-
 	return (
-		<div className="event-page">
+		<div className="events-page">
 			<table>
 				<thead>
 					<tr>
@@ -39,4 +37,4 @@ function EventPage() {
 	);
 }
 
-export default EventPage;
+export default EventsPage;
