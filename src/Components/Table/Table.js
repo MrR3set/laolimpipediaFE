@@ -3,12 +3,9 @@ import ReactCountryFlag from "react-country-flag"
 
 import './Table.scss';
 
-function Table({results,saveResults}) {
+function Table({results,saveResults, allowEdits=false}) {
 
 	const [data,setData] = useState([]);
-
-	// Todo
-	const [allowEdits,setAllowEdits] = useState(true);
 
 	useEffect(()=>{
 		if(results)
@@ -27,7 +24,7 @@ function Table({results,saveResults}) {
 		setData(data.filter((e,i)=>i!==index));
 	}
 
-	// data = data.sort((a,b) => a.score < b.score ? 1 : -1)
+	// data = data.sort((a,b) => a.score < b.score ? 1 : -1) TODO
 
     return (
         <div className="table-wrapper">
@@ -36,22 +33,20 @@ function Table({results,saveResults}) {
 					<tr>
 						<th>nombre</th>
 						<th>resultado</th>
+						{allowEdits?<th></th>:null}
 					</tr>
 				</thead>
 				<tbody>
 					{data.map(({name,country, score},i)=>{
-						return <TableRow name={name} country={country} score={score} key={i} index={i} updateEntry={updateEntry} deleteEntry={deleteEntry}/>
+						return <TableRow name={name} country={country} score={score} key={i} index={i} updateEntry={updateEntry} deleteEntry={deleteEntry} allowEdits={allowEdits}/>
 					})}
 				</tbody>
         	</table>
-			{
-				// TODO
-				allowEdits?
-					<>
-						<TableRow isNew={true} updateEntry={addNewAthlete}/>
-					</>
-				:null
-			}
+			{allowEdits?
+				<>
+					<TableRow isNew={true} updateEntry={addNewAthlete}/>
+				</>
+			:null}
 
 			<button onClick={(e)=>{e.preventDefault(); saveResults(data)}}>Guardar resultados</button>
 		</div>
@@ -98,7 +93,7 @@ const TableRow = ({name,country, allowEdits, score, index, updateEntry, isNew=fa
 			<td>
 				{editing?
 					<>
-						<input name="country" value={newInfo.country} placeholder="country"  onChange={onChangeHandler}/>
+						<input name="country" value={newInfo.country} placeholder="cc"  onChange={onChangeHandler}/>
 						<input name="name" value={newInfo.name} placeholder="name" onChange={onChangeHandler}/>
 					</>:
 					<>
@@ -115,17 +110,15 @@ const TableRow = ({name,country, allowEdits, score, index, updateEntry, isNew=fa
 				}
 			</td>
 
-			{editing?<>
-				{isNew?
-				<>
-					<button onClick={saveChanges}>Añadir atleta</button>
-				</>
-				:<>
-					<button onClick={saveChanges}>S</button>
-					<button onClick={cancelChanges}>C</button>
-					<button onClick={()=>{setEditing(false); deleteEntry(index)}}>D</button>
-				</>}
-			</>:<button onClick={()=>{setEditing(true)}}>E</button>}
+			{isNew?<button className="cta addNew" onClick={saveChanges}>Añadir atleta</button>:null}
+
+			{allowEdits
+				?editing?<>
+					<button className="cta" onClick={saveChanges}>S</button>
+					<button className="cta" onClick={cancelChanges}>C</button>
+					<button className="cta delete" onClick={()=>{setEditing(false); deleteEntry(index)}}>D</button>
+				</>:<button className="cta" onClick={()=>{setEditing(true)}}>E</button>
+			:null}
 
 		</tr> 	
 
