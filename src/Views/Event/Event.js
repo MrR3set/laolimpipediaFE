@@ -2,18 +2,24 @@
 import './Event.scss';
 import axios from "axios";
 import {useEffect, useState} from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import Table from "../../Components/Table/Table"
 
 function EventPage() {
 	// Here we get all the events...
-	const {id} = useParams()
+	const {id} = useParams();
+	const history = useHistory()
+	const isNew = id == 'new'
 
 	const [event,setEvent] = useState({});
-	const [isNew, setIsNew] = useState(id === 'new');
-	const [editing, setEditing] = useState(true);
+	const [editing, setEditing] = useState(false);
 	const [addResults,setAddResults]=useState(false);
 	const [results,setResults]=useState([]);
+
+	useEffect(()=>{
+		if(isNew)
+			setEditing(true);
+	},[isNew]);
 
 	useEffect(()=>{
 		if (!isNew && !Object.keys(event).length > 0)
@@ -26,7 +32,6 @@ function EventPage() {
 		if(event.results){
 			setResults(event.results[0])
 		}
-
 	},[event]);
 
 
@@ -37,15 +42,22 @@ function EventPage() {
 	
 	const handleSave = (e) => {
 		e.preventDefault();
-		setIsNew(false);
 		setEditing(false);
 	}
 
 	const pushUpdate = (e) => {
 		e.preventDefault();
-		axios.put(`http://localhost:5001/api/admin/events/${id}`, event).then(res=>{
-			console.log(res)
-		})
+		console.log(isNew)
+		if(isNew){
+			axios.post(`http://localhost:5001/api/admin/events/`, event).then(res=>{
+				history.push('/admin/eventos/'+res.data.id)
+			})
+		}else{
+			axios.put(`http://localhost:5001/api/admin/events/${id}`, event).then(res=>{
+	
+			})
+		}
+
 	}
 
 	const saveResults = (newValues) => {
@@ -79,7 +91,7 @@ function EventPage() {
 		<div className="event-wrapper page">
 
 			<div className="header">
-				{isNew || editing?<>
+				{editing?<>
 					<div className="left">
 						<input	className="title" name="name" placeholder="titulo" value={event.name} onChange={onChangeHandler}/>
 					
