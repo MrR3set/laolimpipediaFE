@@ -60,22 +60,20 @@ function EventPage() {
 				console.log(res)
 			})
 	}
-	
 
+	const discardResults = (e) => {
+		e.preventDefault();
+		if(event.results){
+			setResults(event.results[0])
+		}
+		setAddResults(false);
+	}
 	
-
 	return (
 		<div className="event-wrapper page">
 
 			<div className="header">
 				{isNew || editing?<>
-				
-
-		
-			
-				
-
-
 					<div className="left">
 						<input	className="title" name="name" placeholder="titulo" value={event.name} onChange={onChangeHandler}/>
 					
@@ -95,12 +93,7 @@ function EventPage() {
 					<div className="right">
 						<button className="edit-controls cta" onClick={handleSave}>Guardar cambios</button>
 					</div>
-
-
-
 				</>:<>
-				
-				
 					<div className="left">
 						<h1 className="title">{event.name}</h1>
 						<p className="date">{String(event.date).slice(0,16).replace("T", " - ")}</p>
@@ -109,6 +102,7 @@ function EventPage() {
 
 					<div className="right">
 						<div className="bckg"></div>
+						<button className="save-controls cta" onClick={pushUpdate}>Subir cambios</button>
 						<button className="edit-controls cta" onClick={(e)=>{e.preventDefault(); setEditing(true)}}>Editar</button>
 					</div>
 
@@ -116,32 +110,22 @@ function EventPage() {
 			</div>
 
 
-			</>}
+			<div className="content">
+				{results.length>0 || addResults
+				?
+					<>
+						<div className="controls">
+							<button className="cta" onClick={pushResults}>Subir cambios</button> 
+							<button className="cta" onClick={discardResults}>Descartar cambios</button> 
+						</div>
+						<Table results={results} saveResults={saveResults} allowEdits={true}/>
+					</>
+				:
+					<div className="controls">
+						<button className="cta" onClick={(e)=>{e.preventDefault(); setAddResults(true)}}>Añadir resultados</button>
+					</div>
+				}
 			</div>
-
-
-
-			<button onClick={pushUpdate}>Actualizar informacion del evento</button>
-
-
-
-			<br></br>
-
-			<button onClick={pushResults}>Subir resultados</button> 
-
-			
-			
-			<button onClick={(e)=>{e.preventDefault(); setAddResults(true)}}>Añadir resultados</button>
-
-			{
-				addResults?
-				<div>					
-					<Table results={results} saveResults={saveResults}/>
-				</div>:null
-			}
-
-
-
 		</div>
 	);
 }
