@@ -11,9 +11,9 @@ function Table({results,saveResults}) {
 	const [allowEdits,setAllowEdits] = useState(true);
 
 	useEffect(()=>{
-		if(results[0])
+		if(results)
 			setData(results)
-	},[]);
+	},[results]);
 
 	const addNewAthlete = (newAthlete) => {
 		setData([...data, newAthlete]);
