@@ -34,7 +34,6 @@ function EventPage() {
 		}
 	},[event]);
 
-
 	const onChangeHandler = (e) => {
 		e.preventDefault();
 		setEvent({...event, [e.target.name]:e.target.value});
@@ -76,6 +75,17 @@ function EventPage() {
 		if(!event.results || (newValues.length > 0 && isDiff(newValues,event.results[0])) )
 			axios.post(`http://localhost:5001/api/admin/events/${id}`, {results:{0:newValues}}).then(res=>{
 				setEvent({...event, results:res.data.results})
+			})
+	}
+
+	const deleteEvent = () => {
+		
+		let confirmation = window.confirm("Confirmar")
+		
+		if(confirmation)
+			axios.delete(`http://localhost:5001/api/admin/events/${id}`).then(res=>{
+				console.log(res);
+				history.push('/admin/eventos')
 			})
 	}
 
@@ -121,6 +131,7 @@ function EventPage() {
 					<div className="right">
 						<div className="bckg"></div>
 						<button className="save-controls cta" onClick={pushUpdate}>Subir cambios</button>
+						<button className="delete-controls cta" onClick={deleteEvent}>Borrar evento</button>
 						<button className="edit-controls cta" onClick={(e)=>{e.preventDefault(); setEditing(true)}}>Editar</button>
 					</div>
 
