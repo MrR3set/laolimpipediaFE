@@ -2,12 +2,15 @@
 import React from 'react';
 import {useHistory, Link} from 'react-router-dom';
 
-function EventPreview({id, date, name, status, results}) {
+function EventPreview({id, date, sport, name, status, results}) {
 
 	return (
 		<tr className="eventPreview-wrapper">
 			<td>
 				{date}
+			</td>
+			<td>
+				{sport}
 			</td>
 			<td>
 				{name}
