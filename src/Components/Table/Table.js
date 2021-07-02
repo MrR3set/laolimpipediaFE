@@ -3,41 +3,28 @@ import ReactCountryFlag from "react-country-flag"
 
 import './Table.scss';
 
-function Table({results}) {
+function Table({results,saveResults}) {
 
+	const [data,setData] = useState([]);
 
-	const [data,setData] = useState([{name: "sa", country: "as"},
-	{name: "qc", country: "us"}]);
-	const [athleteInfo, setAthleteInfo] = useState({name:'', country:''});
-
+	// Todo
 	const [allowEdits,setAllowEdits] = useState(true);
-	const [editing,setEditing] = useState(true)
-
-
-
 
 	useEffect(()=>{
 		if(results[0])
 			setData(results)
 	},[]);
-	useEffect(()=>{
-		console.log(data)
-	},[data]);
 
-	const onChangeHandler = (e) => {
-		e.preventDefault();
-		setAthleteInfo({...athleteInfo, [e.target.name]:e.target.value});
-	}
-
-	const addNewAthlete = (e) => {
-		e.preventDefault();
-		setData([...data, athleteInfo]);
-		setAthleteInfo({name:'', country:''});
+	const addNewAthlete = (newAthlete) => {
+		setData([...data, newAthlete]);
 	}
 	
-	const toggleEdit = (e) => {
-		e.preventDefault();
-		setEditing(!editing)
+	const updateEntry = (value,index) => {
+		setData(data.map((e,i)=>i===index?value:e));
+	}
+
+	const deleteEntry = (index) => {
+		setData(data.filter((e,i)=>i!==index));
 	}
 
 	// data = data.sort((a,b) => a.score < b.score ? 1 : -1)
@@ -53,7 +40,7 @@ function Table({results}) {
 				</thead>
 				<tbody>
 					{data.map(({name,country, score},i)=>{
-						return <TableRow name={name} country={country} score={score} key={i} index={i}/>
+						return <TableRow name={name} country={country} score={score} key={i} index={i} updateEntry={updateEntry} deleteEntry={deleteEntry}/>
 					})}
 				</tbody>
         	</table>
@@ -61,19 +48,19 @@ function Table({results}) {
 				// TODO
 				allowEdits?
 					<>
-						<input name="country" placeholder="country" value={athleteInfo.country} onChange={onChangeHandler}/>
-						<input name="name" placeholder="name" value={athleteInfo.name} onChange={onChangeHandler} />
-						<button onClick={addNewAthlete}>Add athlete</button>
+						<TableRow isNew={true} updateEntry={addNewAthlete}/>
 					</>
 				:null
 			}
+
+			<button onClick={(e)=>{e.preventDefault(); saveResults(data)}}>Guardar resultados</button>
 		</div>
     );
 }
 
 export default Table;
 
-const TableRow = ({name,country, allowEdits, score, index, updateEntry, isNew=false}) => {
+const TableRow = ({name,country, allowEdits, score, index, updateEntry, isNew=false, deleteEntry}) => {
 
 	const [editing,setEditing] = useState(false);
 	const [newInfo, setNewInfo] = useState({name:'', country:'', score:''})
@@ -134,8 +121,10 @@ const TableRow = ({name,country, allowEdits, score, index, updateEntry, isNew=fa
 					<button onClick={saveChanges}>Añadir atleta</button>
 				</>
 				:<>
-				<button onClick={saveChanges}>S</button>
-				<button onClick={cancelChanges}>C</button>
+					<button onClick={saveChanges}>S</button>
+					<button onClick={cancelChanges}>C</button>
+					<button onClick={()=>{setEditing(false); deleteEntry(index)}}>D</button>
+				</>}
 			</>:<button onClick={()=>{setEditing(true)}}>E</button>}
 
 		</tr> 	
