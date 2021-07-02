@@ -23,3 +23,16 @@ body{
 	min-width: 250px;
 }
 
+.cta{
+	border-radius: 8px;
+	border: none;
+	font-weight: bolder;
+	color: white;
+	background-color: #314FE5;
+	cursor: pointer;
+	transition: 0.2s ease-in;
+	&:hover{
+		background-color: #002258;
+	}
+}
+
