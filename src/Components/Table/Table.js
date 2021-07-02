@@ -24,8 +24,6 @@ function Table({results, saveResults, discardResults, allowEdits=false}) {
 		setData(data.filter((e,i)=>i!==index));
 	}
 
-	// data = data.sort((a,b) => a.score < b.score ? 1 : -1) TODO
-
     return (
         <div className="table-wrapper">
 			<table>
@@ -37,7 +35,7 @@ function Table({results, saveResults, discardResults, allowEdits=false}) {
 					</tr>
 				</thead>
 				<tbody>
-					{data.map(({name,country, score},i)=>{
+					{data.sort((a,b) => Number(a.score) < Number(b.score) ? 1 : -1).map(({name,country, score},i)=>{
 						return <TableRow name={name} country={country} score={score} key={i} index={i} updateEntry={updateEntry} deleteEntry={deleteEntry} allowEdits={allowEdits}/>
 					})}
 				</tbody>
@@ -77,10 +75,11 @@ const TableRow = ({name,country, allowEdits, score, index, updateEntry, isNew=fa
 
 	const saveChanges = (e) => {
 		e.preventDefault();
+
 		if(isNew){
 			updateEntry(newInfo);
 		}else{
-			updateEntry({name:newInfo.name, country:newInfo.country, score:newInfo.score>0?score:null}, index);
+			updateEntry({name:newInfo.name, country:newInfo.country, score:newInfo.score>0?newInfo.score:null}, index);
 			setEditing(false);
 		}
 	}
