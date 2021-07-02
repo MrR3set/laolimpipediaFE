@@ -1,8 +1,9 @@
 
 import React from 'react';
+import {useHistory, Link} from 'react-router-dom';
 
-function EventPreview({date, name, status, results}) {
-	
+function EventPreview({id, date, name, status, results}) {
+
 	return (
 		<tr className="eventPreview-wrapper">
 			<td>
@@ -15,11 +16,11 @@ function EventPreview({date, name, status, results}) {
 				{status}
 			</td>
 			<td>
-				{results ? "Resultados" : "Participantes"}
+				<Link to={"/admin/eventos/" + id }>{results ? "Resultados" : "Participantes"}</Link>
 			</td>
 		</tr>
 	)
-	
+
 }
 
 export default EventPreview;
