@@ -59,9 +59,9 @@ function EventPage() {
 					return e===arrB[i]
 				})
 			}
-		}
+		}	
 
-		if(newValues.length > 0 && isDiff(newValues,event.results[0]) )
+		if(!event.results || (newValues.length > 0 && isDiff(newValues,event.results[0])) )
 			axios.post(`http://localhost:5001/api/admin/events/${id}`, {results:{0:newValues}}).then(res=>{
 				setEvent({...event, results:res.data.results})
 			})
