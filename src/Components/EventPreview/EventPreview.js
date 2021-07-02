@@ -19,7 +19,7 @@ function EventPreview({id, date, sport, name, status, results}) {
 				{status}
 			</td>
 			<td>
-				<Link to={"/admin/eventos/" + id }>{results ? "Resultados" : "Participantes"}</Link>
+				<Link className="cta eventlink" to={"/admin/eventos/" + id }>{results ? "Resultados" : "Participantes"}</Link>
 			</td>
 		</tr>
 	)

@@ -68,6 +68,10 @@ const TableRow = ({name,country, allowEdits, score, index, updateEntry, isNew=fa
 			setNewInfo({name,country,score:score?score:0})
 	},[]);
 
+	useEffect(()=>{
+		setNewInfo({name,country,score:score?score:0});
+	},[editing]);
+
 	const onChangeHandler = (e) => {
 		e.preventDefault();
 		setNewInfo({...newInfo, [e.target.name]:e.target.value});
@@ -82,6 +86,7 @@ const TableRow = ({name,country, allowEdits, score, index, updateEntry, isNew=fa
 			updateEntry({name:newInfo.name, country:newInfo.country, score:newInfo.score>0?newInfo.score:null}, index);
 			setEditing(false);
 		}
+		setNewInfo({name:'', country:'', score:''})
 	}
 
 	const cancelChanges = (e) => {
