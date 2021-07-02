@@ -73,18 +73,29 @@ function Table({results}) {
 
 export default Table;
 
-const TableRow = ({name,country, allowEdits, score}) => {
+const TableRow = ({name,country, allowEdits, score, index, updateEntry, isNew=false}) => {
 
-	const [editing,setEditing] = useState(true);
+	const [editing,setEditing] = useState(false);
 	const [newInfo, setNewInfo] = useState({name:'', country:'', score:''})
 
 	useEffect(()=>{
-		setNewInfo({name,country,score})
-	},[name,country,score])
+		if(isNew)
+			setEditing(true)
+		else
+			setNewInfo({name,country,score:score?score:0})
+	},[]);
 
+	const onChangeHandler = (e) => {
+		e.preventDefault();
+		setNewInfo({...newInfo, [e.target.name]:e.target.value});
+	}
 
 	const saveChanges = (e) => {
 		e.preventDefault();
+		if(isNew){
+			updateEntry(newInfo);
+		}else{
+			updateEntry(newInfo, index);
 		setEditing(false);
 	}
 
@@ -99,20 +110,29 @@ const TableRow = ({name,country, allowEdits, score}) => {
 			<td>
 				{editing?
 					<>
-						<ReactCountryFlag countryCode={country} svg className="flag"/>
-						<input name="name" value={newInfo.name}/>
+						<input name="country" value={newInfo.country} placeholder="country"  onChange={onChangeHandler}/>
+						<input name="name" value={newInfo.name} placeholder="name" onChange={onChangeHandler}/>
 					</>:
 					<>
-						<ReactCountryFlag countryCode={country} svg className="flag"/>
+						<ReactCountryFlag countryCode={country?country:"es"} svg className="flag"/>
 						{name}
 					</>
 				}
 			</td> 	
 			<td>
-				{score}
+				{editing && !isNew?
+					<input name="score" value={newInfo.score} placeholder="score" type="number"  onChange={onChangeHandler}/>
+					:
+					score
+				}
 			</td>
 
 			{editing?<>
+				{isNew?
+				<>
+					<button onClick={saveChanges}>Añadir atleta</button>
+				</>
+				:<>
 				<button onClick={saveChanges}>S</button>
 				<button onClick={cancelChanges}>C</button>
 			</>:<button onClick={()=>{setEditing(true)}}>E</button>}
