@@ -48,20 +48,22 @@ function EventPage() {
 		})
 	}
 
-	const saveResults = (newValue) => {
-		setResults(newValue);
-		if(results.length > 0)
-			axios.post(`http://localhost:5001/api/admin/events/${id}`, {results:{0:results}}).then(res=>{
-				console.log(res.data)
-		})
-	}
+	const saveResults = (newValues) => {
+		setResults(newValues);
 
-	const pushResults = (e) => {
-		e.preventDefault();
+		const isDiff = (arrA,arrB) => {
+			if(arrA.length !== arrB.length ){
+				return true
+			}else{
+				return !arrA.every((e,i)=>{
+					return e===arrB[i]
+				})
+			}
+		}
 
-		if(results.length > 0)
-			axios.post(`http://localhost:5001/api/admin/events/${id}`, {results:{0:results}}).then(res=>{
-				console.log(res)
+		if(newValues.length > 0 && isDiff(newValues,event.results[0]) )
+			axios.post(`http://localhost:5001/api/admin/events/${id}`, {results:{0:newValues}}).then(res=>{
+				setEvent({...event, results:res.data.results})
 			})
 	}
 
