@@ -5,25 +5,52 @@
 
 
 	.header{
-		border: 1px solid red;
 		display: flex;
 		text-transform: capitalize;
 		margin-bottom: 4rem;
+		padding: 2.5rem 1.5rem;
+		min-height: 20rem;
+		
 
 		.left{
-			// background-color: red;
 			display: flex;
 			flex-wrap: wrap;
 			justify-content: space-between;
-			width: 70%;
+			align-items: center;
+			max-width: 800px;
+			width: 100%;
+			padding: 0;
+
+
 			.title{
+				font-size: 4.8rem;
 				width: 100%;
+				margin: 2rem;
 			}
+
+			p,input{
+				margin: 2rem 0;
+				font-size: 2.2rem;
+			}
+
+			select{
+				outline: none;
+				padding: 0.5rem 0;
+			}
+
+			input{
+				border: none;
+				border-bottom: 1px solid black;
+				&:not(.title){
+					max-width: 25%;
+				}
+			}
+
 
 		}
 		.right{
 			display: flex;
-			width: 30%;
+			width: 100%;
 			position: relative;
 			flex-wrap: wrap;
 			justify-content: space-between;
@@ -32,14 +59,19 @@
 				position: absolute;
 				bottom: 0;
 				right: 0;
-				background-color: #002258;
-				color: white;
-				font-weight: bolder;
-				padding: 0.5rem 2rem;
-				font-size: 1.2rem;
-				border: none;
-				border-radius: 5px;
+				padding: 0.5rem 1.5rem;
 				margin: 2px;
+				font-size: 2.2rem;
+				border-radius: 8px;
+				border: none;
+				font-weight: bolder;
+				color: white;
+				background-color: #314FE5;
+				cursor: pointer;
+				transition: 0.2s ease-in;
+				&:hover{
+					background-color: #002258;
+				}
 			}
 
 			// background-color: blue;
