@@ -3,6 +3,7 @@ import './EventsPage.scss';
 import EventPreview from "../../Components/EventPreview/EventPreview";
 import axios from "axios";
 import {useEffect, useState} from 'react';
+import {Link} from "react-router-dom"
 
 function EventsPage() {
 	// Here we get all the events...
@@ -17,6 +18,9 @@ function EventsPage() {
 
 	return (
 		<div className="events-wrapper page">
+			<div className="controls">
+				<Link to="/admin/eventos/new" className="cta">Añadir evento</Link>
+			</div>
 			<div className="table-wrapper">
 				<table>
 					<thead>
