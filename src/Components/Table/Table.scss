@@ -1,5 +1,22 @@
 .table-wrapper{
 
+	input{
+		border: none;
+		border-bottom: 1px solid black;
+		outline: none;
+		margin-right: 1.5rem;
+		font-size: 2.5rem;
+		&[name=country]{
+			width: 50px;
+		}
+	}
+
+	.addNew{
+		margin-top: 2.5rem;
+		font-size: 2.5rem;
+		padding: 0.75rem 1.5rem;
+	}
+
 	table{
 		text-align: left;
 		text-transform: capitalize;
@@ -11,7 +28,7 @@
 			tr{
 				background-color: #002258;
 				color: white;
-				font-size: 1.2rem;
+				font-size: 3.2rem;
 				font-weight: bolder;
 
 				th{
@@ -30,10 +47,19 @@
 		
 		tbody {
 			tr{
+				font-size: 3.2rem;
 				background-color: #fff;
 				&:nth-child(even){
 					background-color: rgb(241, 241, 241);
 				}
+
+				input{
+					font-size: 1.8rem;
+					&[name=country]{
+						width: 25px;
+					}
+				}
+
 				td{
 					padding: 0.75rem 0.5rem;
 			
@@ -43,6 +69,15 @@
 					}
 					
 				}
+
+				.cta{
+					padding: 0.5rem 1rem;
+					margin-right: 0.2rem;
+					&.delete{
+						background-color: red;
+					}
+
+				}		
 			}
 	
 		}
