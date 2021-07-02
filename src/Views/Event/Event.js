@@ -55,8 +55,9 @@ function EventPage() {
 			</>:<>
 				<h3>{event.name}</h3>
 				<p>{event.sport}</p>
-				<p>{event.status} - {event.date}</p>
-				<div>{event.type} - {event.results}</div>
+				<p>{event.status} - {String(event.date).slice(0,16).replace("T", " ")}</p>
+				<div>{event.type}</div>
+				<button onClick={(e)=>{e.preventDefault(); setEditing(true)}}>E</button>
 			</>}
 
 		</div>
