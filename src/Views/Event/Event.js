@@ -31,7 +31,14 @@ function EventPage() {
 	const handleSave = (e) => {
 		e.preventDefault();
 		setIsNew(false);
-		console.log(event)
+		setEditing(false);
+	}
+
+	const pushUpdate = (e) => {
+		e.preventDefault();
+		axios.put(`http://localhost:5001/api/admin/events/${id}`, event).then(res=>{
+			console.log(res)
+		})
 	}
 
 
