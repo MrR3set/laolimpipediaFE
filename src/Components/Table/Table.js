@@ -95,8 +95,9 @@ const TableRow = ({name,country, allowEdits, score, index, updateEntry, isNew=fa
 		if(isNew){
 			updateEntry(newInfo);
 		}else{
-			updateEntry(newInfo, index);
-		setEditing(false);
+			updateEntry({name:newInfo.name, country:newInfo.country, score:newInfo.score>0?score:null}, index);
+			setEditing(false);
+		}
 	}
 
 	const cancelChanges = (e) => {
