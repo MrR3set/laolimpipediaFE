@@ -118,10 +118,6 @@ function EventPage() {
 				{results.length>0 || addResults
 				?
 					<>
-						{/* <div className="controls">
-							<button className="cta" onClick={pushResults}>Subir cambios</button> 
-							<button className="cta" onClick={discardResults}>Descartar cambios</button> 
-						</div> */}
 						<Table results={results} saveResults={saveResults} discardResults={discardResults} allowEdits={true}/>
 					</>
 				:
