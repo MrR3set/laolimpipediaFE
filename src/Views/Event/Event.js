@@ -76,41 +76,44 @@ function EventPage() {
 				
 
 
-				<div className="left">
-					<input	className="title" name="name" placeholder="titulo" value={event.name} onChange={onChangeHandler}/>
-				
-					<input className="date" name="date" placeholder="fecha" type="datetime-local" value={String(event.date).slice(0,16)} onChange={onChangeHandler}/>
+					<div className="left">
+						<input	className="title" name="name" placeholder="titulo" value={event.name} onChange={onChangeHandler}/>
 					
-					<select className="type" name="type" onChange={onChangeHandler} defaultValue={event.type?event.type:"info"}>
-						<option value="info" disabled>Tipo de competicion</option>
-						<option value="bracket">Bracket</option>
-						<option value="table">Table</option>
-					</select>
+						<input className="date" name="date" placeholder="fecha" type="datetime-local" value={String(event.date).slice(0,16)} onChange={onChangeHandler}/>
+						
+						<select className="type" name="type" onChange={onChangeHandler} defaultValue={event.type?event.type:"info"}>
+							<option value="info" disabled>Tipo de competicion</option>
+							<option value="bracket">Bracket</option>
+							<option value="table">Table</option>
+						</select>
 
-					<input className="status" name="status" placeholder="estado" value={event.status} onChange={onChangeHandler}/>
-					
-					<input className="sport" name="sport" placeholder="deporte" value={event.sport} onChange={onChangeHandler}/>
-				</div>
+						<input className="status" name="status" placeholder="estado" value={event.status} onChange={onChangeHandler}/>
+						
+						<input className="sport" name="sport" placeholder="deporte" value={event.sport} onChange={onChangeHandler}/>
+					</div>
 
-				<div className="right">
-					<button className="edit-controls" onClick={handleSave}>Guardar cambios</button>
-				</div>
+					<div className="right">
+						<button className="edit-controls cta" onClick={handleSave}>Guardar cambios</button>
+					</div>
 
 
 
-			</>:<>
+				</>:<>
 				
 				
-				<div className="left">
-					<h1 className="title">{event.name}</h1>
-					<p className="date">{String(event.date).slice(0,16).replace("T", " - ")}</p>
-					<p className="sport">{event.sport}</p>
-				</div>
+					<div className="left">
+						<h1 className="title">{event.name}</h1>
+						<p className="date">{String(event.date).slice(0,16).replace("T", " - ")}</p>
+						<p className="sport">{event.sport}</p>
+					</div>
 
-				<div className="right">
-					<div className="bckg"></div>
-					<button className="edit-controls" onClick={(e)=>{e.preventDefault(); setEditing(true)}}>Editar</button>
-				</div>
+					<div className="right">
+						<div className="bckg"></div>
+						<button className="edit-controls cta" onClick={(e)=>{e.preventDefault(); setEditing(true)}}>Editar</button>
+					</div>
+
+				</>}
+			</div>
 
 
 			</>}
