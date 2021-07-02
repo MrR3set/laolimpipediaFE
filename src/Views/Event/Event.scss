@@ -1,0 +1,50 @@
+.event-wrapper{
+	display: flex;
+	flex-direction: column;
+	justify-items: center;
+
+
+	.header{
+		border: 1px solid red;
+		display: flex;
+		text-transform: capitalize;
+		margin-bottom: 4rem;
+
+		.left{
+			// background-color: red;
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			width: 70%;
+			.title{
+				width: 100%;
+			}
+
+		}
+		.right{
+			display: flex;
+			width: 30%;
+			position: relative;
+			flex-wrap: wrap;
+			justify-content: space-between;
+
+			button.edit-controls{
+				position: absolute;
+				bottom: 0;
+				right: 0;
+				background-color: #002258;
+				color: white;
+				font-weight: bolder;
+				padding: 0.5rem 2rem;
+				font-size: 1.2rem;
+				border: none;
+				border-radius: 5px;
+				margin: 2px;
+			}
+
+			// background-color: blue;
+		}
+
+	}
+
+}
