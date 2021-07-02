@@ -3,7 +3,7 @@ import ReactCountryFlag from "react-country-flag"
 
 import './Table.scss';
 
-function Table({results,saveResults, allowEdits=false}) {
+function Table({results, saveResults, discardResults, allowEdits=false}) {
 
 	const [data,setData] = useState([]);
 
@@ -48,7 +48,10 @@ function Table({results,saveResults, allowEdits=false}) {
 				</>
 			:null}
 
-			<button onClick={(e)=>{e.preventDefault(); saveResults(data)}}>Guardar resultados</button>
+			<div className="controls">
+				<button className="cta" onClick={(e)=>{e.preventDefault(); saveResults(data)}}>Guardar resultados</button>
+				<button className="cta" onClick={discardResults}>Descartar cambios</button> 
+			</div>
 		</div>
     );
 }

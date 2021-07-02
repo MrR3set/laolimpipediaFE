@@ -50,6 +50,10 @@ function EventPage() {
 
 	const saveResults = (newValue) => {
 		setResults(newValue);
+		if(results.length > 0)
+			axios.post(`http://localhost:5001/api/admin/events/${id}`, {results:{0:results}}).then(res=>{
+				console.log(res.data)
+		})
 	}
 
 	const pushResults = (e) => {
@@ -114,11 +118,11 @@ function EventPage() {
 				{results.length>0 || addResults
 				?
 					<>
-						<div className="controls">
+						{/* <div className="controls">
 							<button className="cta" onClick={pushResults}>Subir cambios</button> 
 							<button className="cta" onClick={discardResults}>Descartar cambios</button> 
-						</div>
-						<Table results={results} saveResults={saveResults} allowEdits={true}/>
+						</div> */}
+						<Table results={results} saveResults={saveResults} discardResults={discardResults} allowEdits={true}/>
 					</>
 				:
 					<div className="controls">
