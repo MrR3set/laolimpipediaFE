@@ -11,8 +11,8 @@ function EventPage() {
 
 	const [event,setEvent] = useState({});
 	const [isNew, setIsNew] = useState(id === 'new');
-	const [editing, setEditing] = useState(false);
-	const [addResults,setAddResults]=useState(true);
+	const [editing, setEditing] = useState(true);
+	const [addResults,setAddResults]=useState(false);
 	const [results,setResults]=useState([]);
 
 	useEffect(()=>{
@@ -65,32 +65,56 @@ function EventPage() {
 	
 
 	return (
-		<div className="event-page">
+		<div className="event-wrapper page">
 
-			{isNew || editing?<>
-			
-				<input name="name" placeholder="name" value={event.name} onChange={onChangeHandler}/>
-			
-				<input name="sport" placeholder="sport" value={event.sport} onChange={onChangeHandler}/>
-			
-				<input name="status" placeholder="status" value={event.status} onChange={onChangeHandler}/>
-			
-				<select name="type" onChange={onChangeHandler} defaultValue={event.type?event.type:"info"}>
-					<option value="info" disabled>Tipo de competicion</option>
-					<option value="bracket">Bracket</option>
-					<option value="table">Table</option>
-				</select>
+			<div className="header">
+				{isNew || editing?<>
+				
+
 		
-				<input name="date" placeholder="date" type="datetime-local" value={String(event.date).slice(0,16)} onChange={onChangeHandler}/>
 			
-				<button onClick={handleSave}>S</button>
+				
+
+
+				<div className="left">
+					<input	className="title" name="name" placeholder="titulo" value={event.name} onChange={onChangeHandler}/>
+				
+					<input className="date" name="date" placeholder="fecha" type="datetime-local" value={String(event.date).slice(0,16)} onChange={onChangeHandler}/>
+					
+					<select className="type" name="type" onChange={onChangeHandler} defaultValue={event.type?event.type:"info"}>
+						<option value="info" disabled>Tipo de competicion</option>
+						<option value="bracket">Bracket</option>
+						<option value="table">Table</option>
+					</select>
+
+					<input className="status" name="status" placeholder="estado" value={event.status} onChange={onChangeHandler}/>
+					
+					<input className="sport" name="sport" placeholder="deporte" value={event.sport} onChange={onChangeHandler}/>
+				</div>
+
+				<div className="right">
+					<button className="edit-controls" onClick={handleSave}>Guardar cambios</button>
+				</div>
+
+
+
 			</>:<>
-				<h3>{event.name}</h3>
-				<p>{event.sport}</p>
-				<p>{event.status} - {String(event.date).slice(0,16).replace("T", " ")}</p>
-				<div>{event.type}</div>
-				<button onClick={(e)=>{e.preventDefault(); setEditing(true)}}>E</button>
+				
+				
+				<div className="left">
+					<h1 className="title">{event.name}</h1>
+					<p className="date">{String(event.date).slice(0,16).replace("T", " - ")}</p>
+					<p className="sport">{event.sport}</p>
+				</div>
+
+				<div className="right">
+					<div className="bckg"></div>
+					<button className="edit-controls" onClick={(e)=>{e.preventDefault(); setEditing(true)}}>Editar</button>
+				</div>
+
+
 			</>}
+			</div>
 
 
 
