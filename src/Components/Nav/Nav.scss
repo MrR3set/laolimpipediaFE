@@ -8,19 +8,33 @@
 	align-items: center;
 	justify-content: space-between;
 
-	@media (min-width:1000px) {
-		display: flex;
+	@media (min-width:$breakpoint-tablet) {
+		height: 12rem;
+		flex-wrap: wrap;
+		justify-content: center;
 	}
-	
+
+	@media (min-width:$breakpoint-laptop) {
+		height: 6rem;
+		justify-content: space-between;
+	}
+
 	.logo{
 		display: flex;
 		align-items: center;
-		width: 40%;
+		width: 100%;
+		justify-content: center;
 		color: white;
+		@media (min-width:$breakpoint-tablet) {
+			width: 100%;
+			height: 50%;
+			justify-content: center;
+		}
 		img{
 			height: 5.6rem;
 			margin-right: 2.5rem;
 		}
+
 		h1{
 			font-family: 'Montserrat', sans-serif;
 			font-weight: 500;
@@ -38,15 +52,28 @@
 		height: 100%;
 		background-color: whitesmoke;
 		clip-path: polygon(6% 0, 100% 0, 100% 100%, 6% 100%, 0% 50%);
+		display: none;
+		
+		@media (min-width:$breakpoint-tablet) {
+			display: block;
+			width: 100%;
+			height: 50%;
+			clip-path: none;
+		}
 
 		.links{
-			height: inherit;
+			height: 100%;
 			width: 80%;
 			margin-left: auto;
 			margin-top: -1px;
 			display: flex;
 			justify-content: space-around;
 			align-items: center;
+
+			@media (min-width:$breakpoint-phone) {
+				margin: 0 auto;
+			}
+			
 			a{
 				font-family: 'Roboto', sans-serif;
 				color: black;
