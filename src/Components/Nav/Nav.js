@@ -1,6 +1,6 @@
 
 import React, {useEffect, useRef, useState} from 'react';
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import "./Nav.scss"
 
 import Logo from "../../Assets/Logo.png"
@@ -25,12 +25,12 @@ function Nav() {
 
 			<div className={`links-wrapper ${isOpen?"isOpen":''}`}>
 				<div className="links">
-					<Link to="/" onClick={toggleMenu}>Inicio</Link>
-					<Link to="/admin/eventos" onClick={toggleMenu}>Horarios</Link>
-					<Link to="/admin/medallero" onClick={toggleMenu}>Medallero</Link>
-					<Link to="/admin/enDirecto" onClick={toggleMenu}>En Directo</Link>
-					<Link to="/admin/guia" onClick={toggleMenu}>Guia</Link>
-					<Link to="/admin/contacto" onClick={toggleMenu}>Contacto</Link>
+					<NavLink exact to="/" onClick={toggleMenu}>Inicio</NavLink>
+					<NavLink to="/admin/eventos" onClick={toggleMenu}>Horarios</NavLink>
+					<NavLink to="/admin/medallero" onClick={toggleMenu}>Medallero</NavLink>
+					<NavLink to="/admin/enDirecto" onClick={toggleMenu}>En Directo</NavLink>
+					<NavLink to="/admin/guia" onClick={toggleMenu}>Guia</NavLink>
+					<NavLink to="/admin/contacto" onClick={toggleMenu}>Contacto</NavLink>
 				</div>
 			</div>
 			<div className="menu" onClick={toggleMenu}>N</div>

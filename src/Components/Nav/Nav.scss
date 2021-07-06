@@ -118,6 +118,17 @@
 				color: black;
 				font-weight: 800;
 				font-size: 1.6rem;
+				position: relative;
+				&.active::after{
+					content: "";
+					position: absolute;
+					width: 100%;
+					height: 4px;
+					background-color: black;
+					bottom: -4px;
+					left: 0;
+					
+				}
 			}
 		}
 
