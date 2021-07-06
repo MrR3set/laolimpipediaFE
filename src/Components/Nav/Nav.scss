@@ -23,9 +23,13 @@
 	.logo{
 		display: flex;
 		align-items: center;
-		width: 100%;
+		width: 95%;
 		justify-content: center;
 		color: white;
+		@media (min-width:$breakpoint-phone) {
+			width: 100%;
+			height: 65%;
+		}
 		@media (min-width:$breakpoint-tablet) {
 			width: 100%;
 			height: 65%;
@@ -37,7 +41,7 @@
 		}
 		img{
 			height: 5rem;
-			margin: 0 4.5rem 0 1.5rem;
+			margin: 0 0.5rem 0 0;
 			@media (min-width:$breakpoint-phone) {
 				height: 5.6rem;
 			}
@@ -138,6 +142,16 @@
 
 	.menu{
 		z-index: 99;
-		@media (min-width:$breakpoint-phone) {display: none;}
+		font-size: 2.2rem;
+		width: 25px;
+		height: 25px;
+		margin-right: 25px;
+		&:not(.isOpen){
+			svg{
+				fill: white;
+			}
+		}
+		
+		@media (min-width:$breakpoint-tablet) {display: none;}
 	}
 }		

@@ -3,14 +3,17 @@ import React, {useEffect, useRef, useState} from 'react';
 import { NavLink } from 'react-router-dom'
 import "./Nav.scss"
 
-import Logo from "../../Assets/Logo.png"
+import Logo from "../../Assets/Logo.png";
+
+import { ReactComponent as CloseIcon } from '../../Assets/CrossIcon.svg'
+import { ReactComponent as HamburgerIcon } from '../../Assets/HamburgerMenu.svg'
 
 function Nav() {
 
 	const [isOpen,setIsOpen] = useState(false);
 
 	const toggleMenu = () => {
-		if(window.innerWidth > 711){
+		if(window.innerWidth > 768){
 			return
 		}
 		setIsOpen(!isOpen);
@@ -33,7 +36,10 @@ function Nav() {
 					<NavLink to="/admin/contacto" onClick={toggleMenu}>Contacto</NavLink>
 				</div>
 			</div>
-			<div className="menu" onClick={toggleMenu}>N</div>
+
+			<div className={`menu ${isOpen?"isOpen":''}`} onClick={toggleMenu}>
+				{isOpen?<CloseIcon />:<HamburgerIcon />}
+			</div>
 		</div>
 	)
 
