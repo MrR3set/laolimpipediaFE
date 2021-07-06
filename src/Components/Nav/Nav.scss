@@ -73,10 +73,33 @@
 			clip-path: polygon(6% 0, 100% 0, 100% 100%, 6% 100%, 0% 50%);
 		}
 
+		@media (max-width:$breakpoint-tablet) {
+			position: absolute;
+			top: 0;
+			left: 100%;
+			width: 0;
+			height: 100%;
+			background-color: rgba(255, 255, 255, 0.8);
+			transition: 0.2s ease-in-out all;
+			overflow-y: auto;
+			.links{
+				display: flex;
+				flex-direction: column;
+				width: 100%;
+				a:nth-child(odd){
+					width: 100%;
+					text-align: center;
+				}
+			}
+			&.isOpen{
+				transform: translateX(-100%);
+				width: 100%;
+			}
+		}
+
 		.links{
 			height: 100%;
 			width: 80%;
-			display: none;
 			margin: 0 auto;
 			margin-top: -1px;
 			justify-content: space-around;
@@ -90,7 +113,6 @@
 				margin-left: auto;
 			}
 
-
 			a{
 				font-family: 'Roboto', sans-serif;
 				color: black;
@@ -102,8 +124,9 @@
 
 	}
 
-	
 
-
-
-}
+	.menu{
+		z-index: 99;
+		@media (min-width:$breakpoint-phone) {display: none;}
+	}
+}		
