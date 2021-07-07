@@ -88,10 +88,10 @@ function ProductsCarrousel({items=[]}) {
 				})}
 			</div>
 
-            <div className="controls next" onClick={()=>{scrollToNextPage("next")}} disabled={scrollSize<=1 || Math.ceil(scrollProgress)===100 }>
+            <div className="controls next" onClick={()=>{scrollToNextPage("next")}}>
 				&#10095;
 			</div>
-            <div className="controls prev" onClick={()=>{scrollToNextPage("prev")}} disabled={Math.floor(scrollProgress)===0}>
+            <div className="controls prev" onClick={()=>{scrollToNextPage("prev")}}>
 				&#10094;
 			</div>
 
