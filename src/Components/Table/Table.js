@@ -111,7 +111,7 @@ const TableRow = ({name,country, allowEdits, score, index, updateEntry, isNew=fa
 			</td> 	
 			<td>
 				{editing && !isNew?
-					<input name="score" value={newInfo.score} placeholder="score" type="number"  onChange={onChangeHandler}/>
+					<input name="score" value={newInfo.score} placeholder="score"  onChange={onChangeHandler}/>
 					:
 					score
 				}
