@@ -1,15 +1,18 @@
 import React, { useState, useContext, useEffect } from 'react';
 import './Carrousel.scss';
 
-function ProductsCarrousel({results=[], className='', title, description}) {
+function ProductsCarrousel({items=[]}) {
     const target = React.createRef();
     
     const [scrollProgress, setScrollProgress] = useState(0);
-    const [scrollSize, setScrollSize] = useState(4);
+    const [scrollSize, setScrollSize] = useState(0);
+
+	
+
 
 	useEffect(()=>{
-		console.log(scrollProgress)
-	},[scrollProgress])
+		setScrollSize(items.length);
+	},[])
 
     useEffect(()=>{
         target.current.addEventListener('scroll', scrollListener);
@@ -28,9 +31,9 @@ function ProductsCarrousel({results=[], className='', title, description}) {
             return setScrollProgress(0);
         
         if(windowScroll > totalWidth)
-            return setScrollProgress(4);
+            return setScrollProgress(items.length);
 
-        setScrollProgress(Math.floor((windowScroll/totalWidth) * 4 ));
+        setScrollProgress(Math.floor((windowScroll/totalWidth) * 4 ) + 1 );
 
     }
     
@@ -55,8 +58,8 @@ function ProductsCarrousel({results=[], className='', title, description}) {
         const pageSize = element.children[0].offsetWidth; 
 
 		if(direction==="prev" && scrollProgress==0){
-			scrollToPage(4)
-		}else if(direction==="next" && scrollProgress>=3){
+			scrollToPage(items.length)
+		}else if(direction==="next" && scrollProgress>=items.length-1){
 			scrollToPage(0);
 		}else{
 			element.scrollTo({
@@ -73,25 +76,24 @@ function ProductsCarrousel({results=[], className='', title, description}) {
 
 
 			<div className="carrouselView" ref={target}>
-				<CarrouselItem></CarrouselItem>
-				<CarrouselItem></CarrouselItem>
-				<CarrouselItem></CarrouselItem>
-				<CarrouselItem></CarrouselItem>
-
-
+				{items.map(({name,path,imageUrl},i)=>{
+					return <CarrouselItem name={name} key={i} imageUrl={imageUrl}/>
+				})}
 			</div>
+
+
 			<div className='scrollProgress'>
 				{[...Array(scrollSize)].map((e,i)=>{
 					return <div className={`step ${scrollProgress===i?"active":''}`}  onClick={()=>{scrollToPage(i)}} ></div>
 				})}
 			</div>
 
-            <div className="controls next" onClick={()=>{scrollToNextPage("next")}}
-                disabled={scrollSize<=1  || Math.ceil(scrollProgress)===100 }
-            >&#10095;</div>
-            <div className="controls prev" onClick={()=>{scrollToNextPage("prev")}}
-                disabled={Math.floor(scrollProgress)===0}
-            >&#10094;</div>
+            <div className="controls next" onClick={()=>{scrollToNextPage("next")}} disabled={scrollSize<=1 || Math.ceil(scrollProgress)===100 }>
+				&#10095;
+			</div>
+            <div className="controls prev" onClick={()=>{scrollToNextPage("prev")}} disabled={Math.floor(scrollProgress)===0}>
+				&#10094;
+			</div>
 
         </div>
     );
@@ -104,12 +106,11 @@ export default ProductsCarrousel;
 const CarrouselItem = ({imageUrl,inverted=false,path="/", name=""}) => {
 	return (
 		<div className="carrousel-Item">
-			<img className="foreground" src="https://images.unsplash.com/photo-1625687489204-d15818940ef8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=635&q=80"></img>
-			<img className="background" src="https://images.unsplash.com/photo-1625687489204-d15818940ef8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=635&q=80"></img>
+			<img className="foreground" src={imageUrl}></img>
+			<img className="background" src={imageUrl}></img>
 
 			<div className="content">
-				<h1>Title</h1>
-
+				<h1>{name}</h1>
 			</div>
 		</div>
 	)
