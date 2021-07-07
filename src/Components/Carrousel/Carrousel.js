@@ -1,14 +1,11 @@
 import React, { useState, useContext, useEffect } from 'react';
 import './Carrousel.scss';
 
-function ProductsCarrousel({items=[]}) {
+function Carrousel({items=[]}) {
     const target = React.createRef();
     
     const [scrollProgress, setScrollProgress] = useState(0);
     const [scrollSize, setScrollSize] = useState(0);
-
-	
-
 
 	useEffect(()=>{
 		setScrollSize(items.length);
@@ -24,16 +21,18 @@ function ProductsCarrousel({items=[]}) {
 			return
 
         const element = target.current;
-        const windowScroll = element.scrollLeft;
+        const windowScroll = Math.ceil(element.scrollLeft);
         const totalWidth = element.scrollWidth - element.clientWidth;
-        
+		const pageSize = element.children[0].offsetWidth; 
+
         if (windowScroll === 0)
             return setScrollProgress(0);
         
-        if(windowScroll > totalWidth)
-            return setScrollProgress(items.length);
+        if(windowScroll > pageSize*(items.length-2))
+            return setScrollProgress(items.length-1);
 
-        setScrollProgress(Math.floor((windowScroll/totalWidth) * 4 ) + 1 );
+
+        setScrollProgress(Math.floor((windowScroll/totalWidth) * items.length )  );
 
     }
     
@@ -42,11 +41,11 @@ function ProductsCarrousel({items=[]}) {
 			return
 
         const element = target.current;
-        const firstChild = element.children[0]; 
+		const pageSize = element.children[0].offsetWidth; 
 
         element.scrollTo({
             top:100,
-            left:firstChild.offsetWidth * i,
+            left:pageSize * i,
             behavior:'smooth'
         })
     }
@@ -100,10 +99,10 @@ function ProductsCarrousel({items=[]}) {
 
 }
 
-export default ProductsCarrousel;
+export default Carrousel;
 
 
-const CarrouselItem = ({imageUrl,inverted=false,path="/", name=""}) => {
+const CarrouselItem = ({imageUrl,path="/", name=""}) => {
 	return (
 		<div className="carrousel-Item">
 			<img className="foreground" src={imageUrl}></img>
