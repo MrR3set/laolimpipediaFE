@@ -1,27 +1,27 @@
 
 import './HomePage.scss';
-import { Link } from "react-router-dom"
+import Carrousel from "../../Components/Carrousel/Carrousel";
+import { Link } from "react-router-dom";
+
+const HomePageData = [
+	{name:"Horarios y Resultados en directo", path:"/admin/eventos"},
+	{name:"Medallero", path:"/admin/medallero"},
+	{name:"Guia oficial la Olimpipedia JJ.OO. Tokio 2020", path:"/admin/guia"},
+	{name:"¿Como seguir los juegos con nosotros?", path:"/admin/directo"},
+	{name:"Contacto", path:"/admin/contacto"},
+]
+
 
 function HomePage() {
-
-
 	return (
 		<div className="home-wrapper page">
-			<div>Carrousel</div>
+			<Carrousel items={HomePageData}></Carrousel>
 			
 			<div className="Links">
-
-				<ShowCase name="Horarios y Resultados en directo" path="/admin/eventos" />
-				<ShowCase name="Medallero" inverted path="/admin/medallero"/>
-				<ShowCase name="Guia oficial la Olimpipedia JJ.OO. Tokio 2020" path="/admin/guia"/>
-				<ShowCase name="Como seguir los juegos con nosotros?" inverted path="/admin/directo"/>
-				<ShowCase name="Contacto" path="/admin/contacto"/>
-
-
-
-
-
-			</div>
+				{HomePageData.map(({name,path,imageUrl},i)=>{
+					return <ShowCase name={name} path={path} inverted={i%2===0?true:false}/>
+				})}
+			</div> 
 		</div>
 	);
 }
