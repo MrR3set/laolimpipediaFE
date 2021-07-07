@@ -31,7 +31,7 @@ function Nav() {
 					<NavLink exact to="/" onClick={toggleMenu}>Inicio</NavLink>
 					<NavLink to="/admin/eventos" onClick={toggleMenu}>Horarios</NavLink>
 					<NavLink to="/admin/medallero" onClick={toggleMenu}>Medallero</NavLink>
-					<NavLink to="/admin/enDirecto" onClick={toggleMenu}>En Directo</NavLink>
+					<NavLink to="/admin/directo" onClick={toggleMenu}>En Directo</NavLink>
 					<NavLink to="/admin/guia" onClick={toggleMenu}>Guia</NavLink>
 					<NavLink to="/admin/contacto" onClick={toggleMenu}>Contacto</NavLink>
 				</div>
