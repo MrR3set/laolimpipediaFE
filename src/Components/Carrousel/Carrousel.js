@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 import './Carrousel.scss';
 
-function Carrousel({items=[]}) {
+function Carrousel({items=[], autoPlay=true}) {
     const target = React.createRef();
     
     const [scrollProgress, setScrollProgress] = useState(0);
@@ -10,6 +10,13 @@ function Carrousel({items=[]}) {
 	useEffect(()=>{
 		setScrollSize(items.length);
 	},[])
+
+	useEffect(()=>{
+		if(autoPlay)
+			setInterval(()=>{
+				scrollToNextPage("next")
+			},2500)
+	},[target])
 
     useEffect(()=>{
         target.current.addEventListener('scroll', scrollListener);
