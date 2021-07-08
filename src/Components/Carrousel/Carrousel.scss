@@ -108,10 +108,11 @@
 				display: flex;
 				justify-content: center;
 				align-items: flex-end;
-				color: white;
-				h1{
+				.title{
+					color: white;
 					word-break: break-word;
 					text-align: center;
+					font-weight: bold;
 					max-width: 50%;
 					font-size: 4.6rem;
 					margin-bottom: 6rem;

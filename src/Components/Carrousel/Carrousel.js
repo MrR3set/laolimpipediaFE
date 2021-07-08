@@ -1,5 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 import './Carrousel.scss';
+import { Link } from "react-router-dom"
 
 function Carrousel({items=[], autoPlay=true}) {
     const target = React.createRef();
@@ -83,7 +84,7 @@ function Carrousel({items=[], autoPlay=true}) {
 
 			<div className="carrouselView" ref={target}>
 				{items.map(({name,path,imageUrl},i)=>{
-					return <CarrouselItem name={name} key={i} imageUrl={imageUrl}/>
+					return <CarrouselItem name={name} key={i} imageUrl={imageUrl} path={path}/>
 				})}
 			</div>
 
@@ -116,8 +117,11 @@ const CarrouselItem = ({imageUrl,path="/", name=""}) => {
 			<img className="background" src={imageUrl}></img>
 
 			<div className="content">
-				<h1>{name}</h1>
+				<Link to={path} className="title">
+					{name}
+				</Link>
 			</div>
 		</div>
+
 	)
 }
