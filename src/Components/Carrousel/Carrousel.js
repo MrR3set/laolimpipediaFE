@@ -84,7 +84,7 @@ function Carrousel({items=[], autoPlay=true}) {
 
 			<div className="carrouselView" ref={target}>
 				{items.map(({name,path,imageUrl},i)=>{
-					return <CarrouselItem name={name} key={i} imageUrl={imageUrl} path={path}/>
+					return <CarrouselItem name={name} key={i} imageUrl={imageUrl} path={path} key={i}/>
 				})}
 			</div>
 
