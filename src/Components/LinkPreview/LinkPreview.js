@@ -56,7 +56,7 @@ function LinkPreview({data, allowEdits=false,deleteLink}) {
 					<p className="date">{String(previewData.activeDate).slice(0,16).replace("T", " ")}</p>
 				</div>
 			</div>
-			<button className="cta delete" onClick={()=>{deleteLink(data.id)}}>Borrar</button>
+			{allowEdits?<button className="cta delete" onClick={()=>{deleteLink(data.id)}}>Borrar</button>:null}
 		</div>
 	);
 }

@@ -4,7 +4,7 @@ import axios from "axios";
 import {useEffect, useState} from 'react';
 import ReactCountryFlag from 'react-country-flag';
 
-function MedalsPage({allowEdits=true}) {
+function MedalsPage({allowEdits=false}) {
 
 	const [medalData,setMedalData] = useState([])
 

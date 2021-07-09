@@ -4,7 +4,7 @@ import {useEffect, useState} from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import Table from "../../Components/Table/Table"
 
-function EventPage() {
+function EventPage({allowEdits=false}) {
 	// Here we get all the events...
 	const {id} = useParams();
 	const history = useHistory()
@@ -129,9 +129,11 @@ function EventPage() {
 
 					<div className="right">
 						<div className="bckg"></div>
-						<button className="save-controls cta" onClick={pushUpdate}>Subir cambios</button>
-						<button className="delete-controls cta" onClick={deleteEvent}>Borrar evento</button>
-						<button className="edit-controls cta" onClick={(e)=>{e.preventDefault(); setEditing(true)}}>Editar</button>
+						{allowEdits?<>
+							<button className="save-controls cta" onClick={pushUpdate}>Subir cambios</button>
+							<button className="delete-controls cta" onClick={deleteEvent}>Borrar evento</button>
+							<button className="edit-controls cta" onClick={(e)=>{e.preventDefault(); setEditing(true)}}>Editar</button>
+						</>:null}
 					</div>
 
 				</>}
@@ -142,13 +144,11 @@ function EventPage() {
 				{results.length>0 || addResults
 				?
 					<>
-						<Table results={results} saveResults={saveResults} discardResults={discardResults} allowEdits={true}/>
+						<Table results={results} saveResults={saveResults} discardResults={discardResults} allowEdits={allowEdits}/>
 					</>
-				:
-					<div className="controls">
-						<button className="cta" onClick={(e)=>{e.preventDefault(); setAddResults(true)}}>Añadir resultados</button>
-					</div>
-				}
+				:allowEdits?<div className="controls">
+					<button className="cta" onClick={(e)=>{e.preventDefault(); setAddResults(true)}}>Añadir resultados</button>
+				</div>:null}
 			</div>
 		</div>
 	);

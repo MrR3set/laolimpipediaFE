@@ -5,8 +5,10 @@ import axios from "axios";
 import {useEffect, useState} from 'react';
 import {Link} from "react-router-dom"
 
-function EventsPage() {
+function EventsPage({allowEdits=false}) {
 	// Here we get all the events...
+
+	console.log(allowEdits)
 
 	const [events,setEvents] = useState([])
 
@@ -18,9 +20,11 @@ function EventsPage() {
 
 	return (
 		<div className="events-wrapper page">
-			<div className="controls">
-				<Link to="/admin/eventos/new" className="cta">Añadir evento</Link>
-			</div>
+			{allowEdits?
+				<div className="controls">
+					<Link to="/admin/eventos/new" className="cta">Añadir evento</Link>
+				</div>
+			:null}
 			<div className="table-wrapper">
 				<table>
 					<thead>

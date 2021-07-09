@@ -47,7 +47,7 @@ function EventPage({allowEdits=false}) {
 		<div className="livePage-wrapper page">
  
 			{links.map(linkData=>{
-				return <LinkPreview data={linkData} deleteLink={deleteLink}/>
+				return <LinkPreview data={linkData} deleteLink={deleteLink} allowEdits={allowEdits}/>
 			})} 
 
 			{allowEdits?isAdding?
