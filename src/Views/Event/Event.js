@@ -62,6 +62,11 @@ function EventPage({allowEdits=false}) {
 		setLinks([...links, linkData])
 		setAddLink(false);
 	}
+
+	const deleteLink = (e,index) => {
+		e.preventDefault();
+		setLinks(links.filter((e,i)=>i!==index));
+	}
 	
 	const handleSave = (e) => {
 		e.preventDefault();
@@ -191,22 +196,28 @@ function EventPage({allowEdits=false}) {
 			</div>
 
 			<div className="links">
-				<h1>Eventos relacionados</h1>
+				<h1 className="title">Eventos relacionados</h1>
 
-				{links.map((link,id)=>{
-					return <Link to={link.path} key={id}>{link.name}</Link>
+
+
+					
+				{links.map((link,i)=>{
+					return <div className="link-wrapper">
+						<Link to={link.path} key={i} className="link">{link.name}</Link>
+						{allowEdits?<button className="cta" onClick={(event)=>{deleteLink(event,i)}}>Borrar</button>:null}
+					</div>
 				})}
 				
 				{addLinks?
-					<div>
-						<input name="path" placeholder="link" onChange={onChangeHandlerLinks}/>
-						<input name="name" placeholder="nombre" onChange={onChangeHandlerLinks}/>
+					<div className="form">
+						<input name="path" placeholder="Link" onChange={onChangeHandlerLinks}/>
+						<input name="name" placeholder="Nombre" onChange={onChangeHandlerLinks}/>
 						<button className="cta" onClick={saveLink}>guardar</button>
 					</div>
 				:null}
 
 
-				{allowEdits?<div>
+				{allowEdits?<div className="controls">
 						<button className="cta" onClick={(e)=>{e.preventDefault(); setAddLink(true)}}>+</button>
 						<button className="cta" onClick={uploadLinks}>Subir links</button>
 					</div>
