@@ -9,6 +9,7 @@
 	box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
 	cursor: pointer;
 	user-select: none;
+	position: relative;
 	@media (min-width:$breakpoint-phone) {
 		height: 15rem;
 	}
@@ -17,6 +18,28 @@
 	}
 	@media (min-width:$breakpoint-laptop) {
 		height: 25rem; 
+	}
+
+	&:hover .cta.delete{
+		opacity: 1;
+		visibility: visible;
+	}
+
+	.cta.delete{
+		position: absolute;
+		top: 0;
+		right: 0;
+		background-color: red;
+		margin: 0.25rem;
+		font-size: 1.2rem;
+		padding: 0.2rem 1rem;
+		transition: visibility 0s, opacity 0.2s ease-in-out;
+		opacity: 0;
+		visibility: hidden;
+		@media (min-width:$breakpoint-tablet) {
+			font-size: 1.8rem;
+			padding: 0.2rem 1.4rem;
+		}
 	}
 
 	.image-wrapper{
