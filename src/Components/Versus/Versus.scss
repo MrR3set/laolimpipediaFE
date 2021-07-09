@@ -1,10 +1,9 @@
 .versus-wrapper{
 
-	// border: 1px solid red;
-
 	.teams-wrapper{
 		display: flex;
 		justify-content: space-between;
+		margin-bottom: 6rem;
 
 		.team-wrapper{
 			flex-wrap: wrap;
@@ -30,11 +29,34 @@
 				font-family: Montserrat;
 			}
 
-			
+			input{
+				border: none;
+				border-bottom: 1px solid black;
+				outline: none;
+				&[name=score]{
+					width: 3em;
+					text-align: right;
+				}
+			}
+
+			.controls{
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				margin-top: 2.5rem;
+				width: 100%;
+				.cta{
+					font-size: 1.6rem!important;
+					padding: 0.2rem 1.75rem;
+				}
+			}
 			&:last-child{
 				flex-direction: row-reverse;
 				.title{
 					text-align: right;
+				}
+				input[name=score]{
+					text-align: left;
 				}
 			}
 		}

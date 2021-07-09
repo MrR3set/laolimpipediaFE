@@ -3,22 +3,31 @@ import ReactCountryFlag from "react-country-flag"
 
 import './Versus.scss';
 
-function Versus({results, saveResults, discardResults, allowEdits=false}) {
+function Versus({results, saveResults, allowEdits=false, discardResults}) {
 
-	const [data,setData] = useState([{countryCode:'es', name:"", score:5},{countryCode:'es', name:"", score:5}]);
+
+	const [data,setData] = useState([{country:'es', name:'', score:""},{country:'es', name:'', score:''}]);
 
 	useEffect(()=>{
-		if(results)
+
+		if(results && results.length===2)
 			setData(results)
-	},[results]);
-	
+	},[]);
+
+	const updateEntry = (value,index) => {
+		setData(data.map((e,i)=>i===index?value:e));
+	}
 
     return (
         <div className="versus-wrapper">
 			<div className="teams-wrapper">
-				{results.map(({name,countryCode,score},i)=>{
-					return <TeamResult name={"Team X"} countryCode={countryCode} score={score} key={i}></TeamResult>
+				{data.map(({name,country,score},i)=>{
+					return <TeamResult name={name} country={country} score={score} key={i} allowEdits={allowEdits} index={i} updateEntry={updateEntry}></TeamResult>
 				})}
+			</div>
+
+			<div className="results-controls">
+				<button className="cta" onClick={(e)=>{e.preventDefault(); saveResults(data)}}>Guardar resultados</button>
 			</div>
 		</div>
     );
@@ -26,14 +35,14 @@ function Versus({results, saveResults, discardResults, allowEdits=false}) {
 
 export default Versus;
 
-const TeamResult = ({countryCode='es', name, score=0, allowEdits, index, updateEntry}) => {
+const TeamResult = ({country='es', name, score=0, allowEdits, index, updateEntry}) => {
 
-	const [teamData,setTeamData] = useState({countryCode:'es', name:"", score:5});
+	const [teamData,setTeamData] = useState({country:'es', name:"", score:5});
 	const [editing,setEditing] = useState(false);
 
 	useEffect(()=>{
-		setTeamData({countryCode,name,score});
-	},[]);
+		setTeamData({country,name,score});
+	},[country,name,score]);
 
 	const onChangeHandler = (e) => {
 		e.preventDefault();
@@ -41,7 +50,7 @@ const TeamResult = ({countryCode='es', name, score=0, allowEdits, index, updateE
 	}
 
 	const discardChanges = () => {
-		setTeamData({countryCode,name,score});
+		setTeamData({country,name,score});
 		setEditing(false);
 	}
 
@@ -51,10 +60,10 @@ const TeamResult = ({countryCode='es', name, score=0, allowEdits, index, updateE
 	}
 
 	return <div className="team-wrapper">
-		<ReactCountryFlag countryCode={teamData.countryCode} svg className="flag"/>
+		<ReactCountryFlag countryCode={teamData.country} svg className="flag"/>
 		{editing?<>
-			<input name="score" type="number" className="score" value={teamData.score} placeholder="Titulo" onChange={onChangeHandler}></input>
-			<input name="countryCode" className="title" value={teamData.countryCode} placeholder="Pais" onChange={onChangeHandler}></input>
+			<input name="score" type="number" className="score" value={teamData.score} placeholder="0" onChange={onChangeHandler}></input>
+			<input name="country" className="title" value={teamData.country} placeholder="Pais" onChange={onChangeHandler}></input>
 			<input name="name" className="title" value={teamData.name} placeholder="Titulo" onChange={onChangeHandler}></input>
 		</>:<>
 			<p className="score">{teamData.score}</p>
