@@ -31,23 +31,27 @@ function MedalsPage({allowEdits=true}) {
 				<h1>Medallero</h1>
 			</div>
 
-			<table>
-				<thead>
-					<tr>
-						<th>Pais</th>
-						<th className="medalType">Oro</th>
-						<th className="medalType">Plata</th>
-						<th className="medalType">Bronce</th>
-						{allowEdits?<th className="controls"></th>:null}
-					</tr>
-				</thead>
-				<tbody>
-					{medalData.sort((a,b) => Number(a.score) < Number(b.score) ? 1 : -1).map(({countryCode, country, gold, silver, bronce, id},i)=>{
-						return <TableRow countryCode={countryCode} country={country} gold={gold} silver={silver} bronce={bronce} key={i} id={id} allowEdits={allowEdits} uploadChanges={uploadChanges}/>
-					})}
-				</tbody>
+			<div className="table-wrapper">
+				<table>
+					<thead>
+						<tr>
+							<th>Pais</th>
+							<th className="medalType">Oro</th>
+							<th className="medalType">Plata</th>
+							<th className="medalType">Bronce</th>
+							{allowEdits?<th className="controls"></th>:null}
+						</tr>
+					</thead>
+					<tbody>
+						{medalData.sort((a,b) => Number(a.score) < Number(b.score) ? 1 : -1).map(({countryCode, country, gold, silver, bronce, id},i)=>{
+							return <TableRow countryCode={countryCode} country={country} gold={gold} silver={silver} bronce={bronce} key={i} id={id} allowEdits={allowEdits} uploadChanges={uploadChanges}/>
+						})}
+					</tbody>
 
-			</table>
+				</table>
+
+			</div>
+
 		</div>
 	);
 }

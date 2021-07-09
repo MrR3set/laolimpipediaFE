@@ -1,82 +1,83 @@
 .medals-page-wrapper{
 	display: flex;
 	flex-direction: column;
-	align-items: center;
-	min-height: 50vh;
 
 	.header{
 		margin: 2rem auto 6rem;
 	}
 
-table{
-	text-align: left;
-	text-transform: capitalize;
-	border-spacing: 0;
-	width: 100%;
-	user-select: none;
-
-	thead {
-		tr{
-			background-color: #002258;
-			color: white;
-			font-size: 3.2rem;
-			font-weight: bolder;
-
-			th{
-				padding: 0.25rem 0.5rem;
-				&:first-child{
-					border-top-left-radius: 5px;
-					width: 40%;
-				}
-				&.medalType, .controls{
-					width: 15%;
-					max-width: 15%;
+	.table-wrapper{
+		overflow-x: auto;
+		table{
+			text-align: left;
+			text-transform: capitalize;
+			border-spacing: 0;
+			width: 100%;
+			user-select: none;
+		
+			thead {
+				tr{
+					background-color: #002258;
+					color: white;
+					font-size: 3.2rem;
+					font-weight: bolder;
+		
+					th{
+						padding: 0.25rem 0.5rem;
+						&:first-child{
+							border-top-left-radius: 5px;
+							width: 40%;
+						}
+						&.medalType, .controls{
+							width: 15%;
+							max-width: 15%;
+						}
+					}
 				}
 			}
+			
+			
+			tbody {
+				tr{
+					font-size: 3.2rem;
+					background-color: #fff;
+					&:nth-child(even){
+						background-color: rgb(241, 241, 241);
+					}
+		
+					input{
+						font-size: 1.8rem;
+						&[name=country]{
+							width: 25px;
+						}
+					}
+		
+					td{
+						padding: 0.75rem 0.5rem;
+						.flag{
+							margin-right: 5px;
+							margin-top: -4px;
+						}
+		
+						input{
+							border: none;
+							border-bottom: 1px solid black;
+							outline: none;
+							font-size: 2.5rem;
+							width: 2.5em;
+						}
+					}
+		
+					.cta{
+						padding: 0.5rem 1rem;
+						margin-right: 0.2rem;
+					}		
+				}
+		
+			}
+		
 		}
 	}
-	
-	
-	tbody {
-		tr{
-			font-size: 3.2rem;
-			background-color: #fff;
-			&:nth-child(even){
-				background-color: rgb(241, 241, 241);
-			}
-
-			input{
-				font-size: 1.8rem;
-				&[name=country]{
-					width: 25px;
-				}
-			}
-
-			td{
-				padding: 0.75rem 0.5rem;
-				.flag{
-					margin-right: 5px;
-					margin-top: -4px;
-				}
-
-				input{
-					border: none;
-					border-bottom: 1px solid black;
-					outline: none;
-					font-size: 2.5rem;
-					width: 2.5em;
-				}
-			}
-
-			.cta{
-				padding: 0.5rem 1rem;
-				margin-right: 0.2rem;
-			}		
-		}
-
-	}
-
-}
 
 
 }
