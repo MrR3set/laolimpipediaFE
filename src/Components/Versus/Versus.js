@@ -26,12 +26,54 @@ function Versus({results, saveResults, discardResults, allowEdits=false}) {
 
 export default Versus;
 
-const TeamResult = ({countryCode='es', name, score=0}) => {
+const TeamResult = ({countryCode='es', name, score=0, allowEdits, index, updateEntry}) => {
+
+	const [teamData,setTeamData] = useState({countryCode:'es', name:"", score:5});
+	const [editing,setEditing] = useState(false);
+
+	useEffect(()=>{
+		setTeamData({countryCode,name,score});
+	},[]);
+
+	const onChangeHandler = (e) => {
+		e.preventDefault();
+		setTeamData({...teamData, [e.target.name]:e.target.value})
+	}
+
+	const discardChanges = () => {
+		setTeamData({countryCode,name,score});
+		setEditing(false);
+	}
+
+	const saveChanges = () => {
+		updateEntry(teamData,index)
+		setEditing(false);
+	}
 
 	return <div className="team-wrapper">
-		<ReactCountryFlag countryCode={countryCode} svg className="flag"/>
-		<p className="score">{score}</p>
-		<h1 className="title">{name}</h1>
+		<ReactCountryFlag countryCode={teamData.countryCode} svg className="flag"/>
+		{editing?<>
+			<input name="score" type="number" className="score" value={teamData.score} placeholder="Titulo" onChange={onChangeHandler}></input>
+			<input name="countryCode" className="title" value={teamData.countryCode} placeholder="Pais" onChange={onChangeHandler}></input>
+			<input name="name" className="title" value={teamData.name} placeholder="Titulo" onChange={onChangeHandler}></input>
+		</>:<>
+			<p className="score">{teamData.score}</p>
+			<h1 className="title">{teamData.name}</h1>
+		</>}
+
+
+		{allowEdits?<div className="controls">
+			{editing?
+				<>
+					<button className="cancel-controls cta" onClick={discardChanges}>C</button>
+					<button className="save-controls cta" onClick={saveChanges}>G</button>
+				</>:<>
+					<button className="edit-controls cta" onClick={(e)=>{e.preventDefault(); setEditing(true)}}>E</button>
+				</>
+			}
+		</div>:null}
+
+
 	</div>
 
 }
