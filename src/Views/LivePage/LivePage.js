@@ -25,7 +25,6 @@ function EventPage({allowEdits=false}) {
 		setNewLink({...newLink, [e.target.name]:e.target.value});
 	}
 
-	console.log()
 
 	const uploadLink = () => {
 		axiosWithAuth().post(`admin/livelinks/`, newLink).then(res=>{

@@ -15,7 +15,6 @@ function MedalsPage({allowEdits=false}) {
 	},[])
 
 	const uploadChanges = (id, data) => {
-		console.log(data);
 		axiosWithAuth().put("admin/medals/" + id, data).then(res=>{
 			console.log(res)
 		}).catch(err=>{

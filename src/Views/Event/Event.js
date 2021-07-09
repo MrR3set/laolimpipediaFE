@@ -75,7 +75,6 @@ function EventPage({allowEdits=false}) {
 
 	const pushUpdate = (e) => {
 		e.preventDefault();
-		console.log(isNew)
 		if(isNew){
 			axiosWithAuth().post(`admin/events/`, event).then(res=>{
 				history.push('/admin/eventos/'+res.data.id)
@@ -112,7 +111,6 @@ function EventPage({allowEdits=false}) {
 		
 		if(confirmation)
 		axiosWithAuth().delete(`admin/events/${id}`).then(res=>{
-				console.log(res);
 				history.push('/admin/eventos')
 			})
 	}
