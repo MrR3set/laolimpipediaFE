@@ -73,19 +73,18 @@
 		padding: 0.75rem 0.5rem;
 		h1{
 			margin: 0;
-			height: 25%;
+			// height: 45%;
 			font-family: Roboto;
 			font-size: 1.8rem;
 			@media (min-width:$breakpoint-tablet) {
 				font-size: 3.4rem;
 			}
 			@media (min-width:$breakpoint-laptop) {
-				font-size: 5.4rem; 
+				font-size: 3.8rem; 
 			}
 		}
 		.description{
 			font-size: 1.8rem;
-			min-height: 60%;
 			height: 100%;
 			width: 100%;
 			word-wrap: break-word;
