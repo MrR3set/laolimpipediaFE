@@ -1,3 +1,4 @@
+@import "../../Utils//Variables.scss";
 .livePage-wrapper{
 
 	.addLink{
@@ -35,6 +36,20 @@
 			}
 			.controls{
 				margin-top: auto;
+				display: flex;
+				justify-content: space-between;
+				@media (min-width:$breakpoint-phone) {
+					justify-content: flex-end;
+				}
+				.cta{
+					font-size: 1.65rem;
+					padding: 0.6rem 1.5rem;
+					@media (min-width:$breakpoint-phone) {
+						margin-left: 2.5rem;
+						font-size: 2rem;
+						padding: 0.6rem 2rem;
+					}
+				}
 			}
 		}
 	}
