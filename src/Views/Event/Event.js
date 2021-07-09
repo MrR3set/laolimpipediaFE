@@ -2,7 +2,8 @@ import './Event.scss';
 import axios from "axios";
 import {useEffect, useState} from 'react';
 import { useParams, useHistory } from 'react-router-dom';
-import Table from "../../Components/Table/Table"
+import Table from "../../Components/Table/Table";
+import Versus from "../../Components/Versus/Versus"
 
 function EventPage({allowEdits=false}) {
 	// Here we get all the events...
@@ -59,8 +60,6 @@ function EventPage({allowEdits=false}) {
 	}
 
 	const saveResults = (newValues) => {
-		setResults(newValues);
-
 		const isDiff = (arrA,arrB) => {
 			if(arrA.length !== arrB.length ){
 				return true
@@ -71,10 +70,11 @@ function EventPage({allowEdits=false}) {
 			}
 		}	
 
-		if(!event.results || (newValues.length > 0 && isDiff(newValues,event.results[0])) )
+		if(!event.results || (event.results[0] && newValues.length > 0 && isDiff(newValues,event.results[0])) ){
 			axios.post(`http://localhost:5001/api/admin/events/${id}`, {results:{0:newValues}}).then(res=>{
 				setEvent({...event, results:res.data.results})
 			})
+		}	
 	}
 
 	const deleteEvent = () => {
@@ -94,6 +94,13 @@ function EventPage({allowEdits=false}) {
 			setResults(event.results[0])
 		}
 		setAddResults(false);
+	}
+
+	const resultType = () => {
+		if(event.type === "table")
+			return <Table results={results} saveResults={saveResults} discardResults={discardResults} allowEdits={allowEdits}/>
+		else if(event.type==="bracket")
+			return <Versus results={results} saveResults={saveResults} allowEdits={allowEdits}/>
 	}
 	
 	return (
@@ -144,9 +151,9 @@ function EventPage({allowEdits=false}) {
 				{results.length>0 || addResults
 				?
 					<>
-						<Table results={results} saveResults={saveResults} discardResults={discardResults} allowEdits={allowEdits}/>
+						{resultType()}
 					</>
-				:allowEdits?<div className="controls">
+				:allowEdits?<div className="results-controls">
 					<button className="cta" onClick={(e)=>{e.preventDefault(); setAddResults(true)}}>Añadir resultados</button>
 				</div>:null}
 			</div>
