@@ -1,14 +1,44 @@
-.newLink{
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	border: 1px solid red;
-	&:hover svg{
-		fill: #314FE5;
+.livePage-wrapper{
+
+	.addLink{
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0.5rem;
+		height: 300px;
+
+		&:hover svg{
+			fill: #314FE5;
+		}
+		svg{
+			transition: 0.2s ease-in-out;
+			fill: #002258;
+		}
+
+		&.Form{
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-start;
+			align-items: stretch;
+
+			input{
+				border: none;
+				border-bottom: 1px solid black;
+				outline: none;
+				width: 100%;
+				font-size: 2.2rem;
+				margin-bottom: 2rem;
+				&[name=url],&[name=date]{
+					font-size: 1.8rem;
+					width: 100%;
+				}
+			}
+			.controls{
+				margin-top: auto;
+			}
+		}
 	}
-	svg{
-		transition: 0.2s ease-in-out;
-		fill: #002258;
-	}
+
+	
 }
+
