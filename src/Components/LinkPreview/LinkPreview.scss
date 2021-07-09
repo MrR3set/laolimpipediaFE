@@ -1,13 +1,23 @@
+@import "../../Utils//Variables.scss";
+
 .linkPreview-wrapper{
 	display: flex;
 	margin: 2rem 0;
-	max-height: 300rem;
-	height: 30rem;
+	height: 10rem;
 	max-width: 800px;
 	width: 100%;
 	box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
 	cursor: pointer;
 	user-select: none;
+	@media (min-width:$breakpoint-phone) {
+		height: 15rem;
+	}
+	@media (min-width:$breakpoint-tablet) {
+		height: 20rem;
+	}
+	@media (min-width:$breakpoint-laptop) {
+		height: 25rem; 
+	}
 
 	.image-wrapper{
 		width: 30%;
@@ -25,19 +35,31 @@
 		height: 100%;
 		flex-direction: column;
 		display: flex;
-		padding: 0.5rem 1.5rem 0.5rem;
+		padding: 1rem 1.5rem;
 		h1{
 			margin: 0;
 			height: 25%;
 			font-family: Roboto;
-			font-size: 5.4rem;
+			font-size: 1.8rem;
+			@media (min-width:$breakpoint-tablet) {
+				font-size: 3.4rem;
+			}
+			@media (min-width:$breakpoint-laptop) {
+				font-size: 5.4rem; 
+			}
 		}
 		.description{
-			font-size: 2.2rem;
+			font-size: 1.8rem;
 			min-height: 60%;
 			height: 100%;
 			width: 100%;
 			word-wrap: break-word;
+			@media (min-width:$breakpoint-tablet) {
+				font-size: 2rem;
+			}
+			@media (min-width:$breakpoint-laptop) {
+				font-size: 2.5rem; 
+			}
 		}
 		
 		.info{
@@ -48,16 +70,27 @@
 			.domain{
 				font-family: Montserrat;
 				font-weight: bold;
-				font-size: 22px;
-				line-height: 27px;
+				font-size: 1.2rem;
+				@media (min-width:$breakpoint-tablet) {
+					font-size: 2rem;
+				}
+				@media (min-width:$breakpoint-laptop) {
+					font-size: 2.2rem; 
+				}
 			}
 			.date{
-				font-size: 1.8rem;
+				font-size: 0.8rem;
 				color: #606060;
 				text-align: center;
 				display: flex;
 				justify-content: space-between;
 				align-content: center;
+				@media (min-width:$breakpoint-tablet) {
+					font-size: 2rem;
+				}
+				@media (min-width:$breakpoint-laptop) {
+					font-size: 2.2rem; 
+				}
 			}
 		}
 	}
