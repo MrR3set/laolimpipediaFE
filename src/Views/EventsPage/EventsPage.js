@@ -1,19 +1,15 @@
 
 import './EventsPage.scss';
 import EventPreview from "../../Components/EventPreview/EventPreview";
-import axios from "axios";
+import { axiosWithAuth } from "../../Utils/axiosWithAuth";
 import {useEffect, useState} from 'react';
 import {Link} from "react-router-dom"
 
 function EventsPage({allowEdits=false}) {
-	// Here we get all the events...
-
-	console.log(allowEdits)
-
 	const [events,setEvents] = useState([])
 
 	useEffect(()=>{
-		axios.get("http://localhost:5001/api/admin/events").then(res=>{
+		axiosWithAuth().get(`admin/events`).then(res=>{
 			setEvents(res.data);
 		})
 	},[])

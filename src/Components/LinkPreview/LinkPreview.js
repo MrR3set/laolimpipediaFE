@@ -1,5 +1,6 @@
 import {useEffect, useState } from 'react';
 import axios from "axios"
+import { axiosWithAuth } from "../../Utils/axiosWithAuth";
 import "./LinkPreview.scss";
 import Logo from "../../Assets/Logo.png"
 
@@ -10,7 +11,7 @@ function LinkPreview({data, allowEdits=false,deleteLink}) {
 		if(!data) 
 			return
 		let slowDat = {};
-		axios.get("https://cors-anywhere.herokuapp.com/" + data.url).then(res=>{
+		axiosWithAuth().get("https://cors-anywhere.herokuapp.com/" + data.url).then(res=>{
 			let htmlContent = (new DOMParser).parseFromString(res.data,"text/html");
 			["title","image","description","site_name"].forEach((tag)=>{
 				if(htmlContent.querySelector(`meta[property='og:${tag}']`)){

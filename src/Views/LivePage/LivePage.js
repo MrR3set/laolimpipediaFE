@@ -1,6 +1,6 @@
 import {useEffect, useState } from 'react';
 import LinkPreview from '../../Components/LinkPreview/LinkPreview';
-import axios from "axios";
+import { axiosWithAuth } from '../../Utils/axiosWithAuth';
 import { ReactComponent as AddIcon } from '../../Assets/PlusIconRounded.svg';
 import "./LivePage.scss";
 
@@ -11,7 +11,7 @@ function EventPage({allowEdits=false}) {
 	const [newLink,setNewLink] = useState({url:"",activeDate:new Date(Date.now()).toISOString().slice(0,19),title:"", description:""})
 
 	useEffect(()=>{
-		axios.get(`http://localhost:5001/api/admin/livelinks/`).then(res=>{
+		axiosWithAuth().get(`admin/livelinks/`).then(res=>{
 			setLinks(res.data);
 		})
 	},[]);
@@ -28,7 +28,7 @@ function EventPage({allowEdits=false}) {
 	console.log()
 
 	const uploadLink = () => {
-		axios.post(`http://localhost:5001/api/admin/livelinks/`, newLink).then(res=>{
+		axiosWithAuth().post(`admin/livelinks/`, newLink).then(res=>{
 			if(res.status===201)
 				setNewLink({url:"",activeDate:new Date(Date.now()).toISOString().slice(0,19),title:"", description:""})
 		})
@@ -37,7 +37,7 @@ function EventPage({allowEdits=false}) {
 	const deleteLink = (id) => {
 		let confirmation = window.confirm("Confirmar")
 		if(confirmation)
-			axios.delete(`http://localhost:5001/api/admin/livelinks/${id}`).then(res=>{
+			axiosWithAuth().delete(`admin/livelinks/${id}`).then(res=>{
 				console.log(res);
 			})
 	}

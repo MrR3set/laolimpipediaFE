@@ -1,6 +1,6 @@
 
 import './MedalsPage.scss';
-import axios from "axios";
+import { axiosWithAuth } from '../../Utils/axiosWithAuth';
 import {useEffect, useState} from 'react';
 import ReactCountryFlag from 'react-country-flag';
 
@@ -9,14 +9,14 @@ function MedalsPage({allowEdits=false}) {
 	const [medalData,setMedalData] = useState([])
 
 	useEffect(()=>{
-		axios.get("http://localhost:5001/api/admin/medals").then(res=>{
+		axiosWithAuth().get("admin/medals").then(res=>{
 			setMedalData(res.data);
 		})
 	},[])
 
 	const uploadChanges = (id, data) => {
 		console.log(data);
-		axios.put("http://localhost:5001/api/admin/medals/" + id, data).then(res=>{
+		axiosWithAuth().put("admin/medals/" + id, data).then(res=>{
 			console.log(res)
 		}).catch(err=>{
 			console.log(err)

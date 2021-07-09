@@ -1,5 +1,5 @@
 import './Event.scss';
-import axios from "axios";
+import { axiosWithAuth } from '../../Utils/axiosWithAuth';
 import {useEffect, useState} from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import Table from "../../Components/Table/Table";
@@ -26,7 +26,7 @@ function EventPage({allowEdits=false}) {
 
 	useEffect(()=>{
 		if (!isNew && !Object.keys(event).length > 0)
-			axios.get(`http://localhost:5001/api/admin/events/${id}`).then(res=>{
+			axiosWithAuth().get(`admin/events/${id}`).then(res=>{
 				setEvent(res.data);
 			})
 	},[]);
@@ -52,7 +52,7 @@ function EventPage({allowEdits=false}) {
 
 	const uploadLinks = (e) => {
 		e.preventDefault();
-		axios.post(`http://localhost:5001/api/admin/events/${id}/links`, {relatedLinks:{0:links}}).then(res=>{
+		axiosWithAuth().post(`admin/events/${id}/links`, {relatedLinks:{0:links}}).then(res=>{
 			console.log(res)
 		})
 	}
@@ -77,11 +77,11 @@ function EventPage({allowEdits=false}) {
 		e.preventDefault();
 		console.log(isNew)
 		if(isNew){
-			axios.post(`http://localhost:5001/api/admin/events/`, event).then(res=>{
+			axiosWithAuth().post(`admin/events/`, event).then(res=>{
 				history.push('/admin/eventos/'+res.data.id)
 			})
 		}else{
-			axios.put(`http://localhost:5001/api/admin/events/${id}`, event).then(res=>{
+			axiosWithAuth().put(`admin/events/${id}`, event).then(res=>{
 	
 			})
 		}
@@ -100,7 +100,7 @@ function EventPage({allowEdits=false}) {
 		}	
 
 		if(!event.results || (event.results[0] && newValues.length > 0 && isDiff(newValues,event.results[0])) ){
-			axios.post(`http://localhost:5001/api/admin/events/${id}`, {results:{0:newValues}}).then(res=>{
+			axiosWithAuth().post(`admin/events/${id}`, {results:{0:newValues}}).then(res=>{
 				setEvent({...event, results:res.data.results})
 			})
 		}	
@@ -111,7 +111,7 @@ function EventPage({allowEdits=false}) {
 		let confirmation = window.confirm("Confirmar")
 		
 		if(confirmation)
-			axios.delete(`http://localhost:5001/api/admin/events/${id}`).then(res=>{
+		axiosWithAuth().delete(`admin/events/${id}`).then(res=>{
 				console.log(res);
 				history.push('/admin/eventos')
 			})
