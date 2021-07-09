@@ -38,13 +38,12 @@ function LinkPreview({data}) {
 			
 	},[]);
 
-	console.log(previewData)
-
 
 	return (
 		<div className="linkPreview-wrapper">
 			<div className="image-wrapper">
-				<img src={previewData.image}></img>
+				<img className="background" src={previewData.image}></img>
+				<img className="foreground" src={previewData.image}></img>
 			</div>
 			<div className="content-wrapper">
 		
@@ -55,11 +54,7 @@ function LinkPreview({data}) {
 				</div>
 				<div className="info">
 					<p className="domain">{previewData.domain}Domain</p>
-					{/* <p className="date">{previewData.activeDate}</p> */}
 					<p className="date">{String(previewData.activeDate).slice(0,16).replace("T", " ")}</p>
-
-
-					
 				</div>
 			</div>
 		</div>
