@@ -1,13 +1,12 @@
+.medals-page-wrapper{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	min-height: 50vh;
 
-
-
-
-
-
-
-
-
-
+	.header{
+		margin: 2rem auto 6rem;
+	}
 
 table{
 	text-align: left;
@@ -64,7 +63,6 @@ table{
 					border: none;
 					border-bottom: 1px solid black;
 					outline: none;
-					// margin-right: 1.5rem;
 					font-size: 2.5rem;
 					width: 2.5em;
 				}
@@ -73,13 +71,12 @@ table{
 			.cta{
 				padding: 0.5rem 1rem;
 				margin-right: 0.2rem;
-				&.delete{
-					background-color: red;
-				}
-
 			}		
 		}
 
 	}
+
+}
+
 
 }

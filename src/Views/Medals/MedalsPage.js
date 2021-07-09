@@ -25,7 +25,12 @@ function MedalsPage({allowEdits=true}) {
 	}
 
 	return (
-		<div className="medals-wrapper page">
+		<div className="medals-page-wrapper page">
+
+			<div className="header">
+				<h1>Medallero</h1>
+			</div>
+
 			<table>
 				<thead>
 					<tr>
