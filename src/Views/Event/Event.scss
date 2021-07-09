@@ -19,7 +19,7 @@
 			padding: 2.5rem 1.5rem;
 			min-height: 20rem;
 		}
-
+		
 		.left{
 			display: flex;
 			flex-wrap: wrap;
@@ -28,7 +28,7 @@
 			max-width: 800px;
 			width: 100%;
 			padding: 0;
-
+			
 			.title{
 				font-size: 3rem;
 				width: 100%;
@@ -38,7 +38,7 @@
 					font-size: 4.8rem;
 				}
 			}
-
+			
 			p,input{
 				margin: 2rem 0;
 				font-size: 2rem;
@@ -47,13 +47,13 @@
 					font-size: 2.2rem;
 				}
 			}
-
+			
 			select{
 				outline: none;
 				padding: 0.5rem 0;
 				width: 45%;
 			}
-
+			
 			input{
 				border: none;
 				border-bottom: 1px solid black;
@@ -63,7 +63,7 @@
 					font-size: 1.8rem;
 				}
 			}
-
+			
 			@media (min-width:$breakpoint-tablet){
 				select{
 					width: 15%;
@@ -85,15 +85,15 @@
 			flex-wrap: wrap;
 			justify-content: flex-end;
 			background-color: white;
-			// clip-path: polygon(0 0, 100% 0%, 100% 100%, 30% 100%);
-
+			// clip-path: polygon(0 0, 100% 0%, 100% 100%, 30% 100%);	
 			@media (min-width:$breakpoint-tablet){
 				width: 60%;
 			}
 			@media (min-width:$breakpoint-desktop){
 				width: 30%;
+				margin-left: auto;
 			}
-	
+			
 			.controls{
 				display: flex;
 				justify-content: space-between;
