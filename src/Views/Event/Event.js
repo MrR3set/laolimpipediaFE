@@ -119,13 +119,22 @@ function EventPage({allowEdits=false}) {
 							<option value="table">Table</option>
 						</select>
 
-						<input className="status" name="status" placeholder="estado" value={event.status} onChange={onChangeHandler}/>
+						<select className="status" name="status" onChange={onChangeHandler} defaultValue={event.status?event.status:"info"}>
+							<option value="info" disabled>Estado</option>
+							<option value="Oficial">Oficial</option>
+							<option value="Directo">En Directo</option>
+							<option value="Programado">Programado</option>
+						</select>
+
+						{/* <input className="status" name="status" placeholder="estado" value={event.status} onChange={onChangeHandler}/> */}
 						
 						<input className="sport" name="sport" placeholder="deporte" value={event.sport} onChange={onChangeHandler}/>
 					</div>
 
 					<div className="right">
-						<button className="edit-controls cta" onClick={handleSave}>Guardar cambios</button>
+						<div className="controls">
+							<button className="save-controls cta" onClick={handleSave}>Guardar cambios</button>
+						</div>
 					</div>
 				</>:<>
 					<div className="left">
@@ -135,11 +144,12 @@ function EventPage({allowEdits=false}) {
 					</div>
 
 					<div className="right">
-						<div className="bckg"></div>
 						{allowEdits?<div className="controls">
-							<button className="save-controls cta" onClick={pushUpdate}>Subir cambios</button>
-							<button className="delete-controls cta" onClick={deleteEvent}>Borrar evento</button>
-							<button className="edit-controls cta" onClick={(e)=>{e.preventDefault(); setEditing(true)}}>Editar</button>
+							{editing?<><button className="save-controls cta" onClick={handleSave}>Guardar cambios</button></>:<>
+								<button className="save-controls cta" onClick={pushUpdate}>Subir cambios</button>
+								<button className="delete-controls cta" onClick={deleteEvent}>Borrar evento</button>
+								<button className="edit-controls cta" onClick={(e)=>{e.preventDefault(); setEditing(true)}}>Editar</button>
+							</>}
 						</div>:null}
 					</div>
 
