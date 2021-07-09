@@ -55,11 +55,12 @@ a{
 .cta{
 	border-radius: 8px;
 	border: none;
-	font-weight: bolder;
+	font-weight: bold;
 	color: white;
 	background-color: #314FE5;
 	cursor: pointer;
 	transition: 0.2s ease-in;
+	font-family: Montserrat;
 	&:hover{
 		background-color: #002258;
 	}
