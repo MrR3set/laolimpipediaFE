@@ -3,10 +3,10 @@ import axios from "axios";
 import {useEffect, useState} from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import Table from "../../Components/Table/Table";
-import Versus from "../../Components/Versus/Versus"
+import Versus from "../../Components/Versus/Versus";
+import { Link } from "react-router-dom";
 
 function EventPage({allowEdits=false}) {
-	// Here we get all the events...
 	const {id} = useParams();
 	const history = useHistory()
 	const isNew = id == 'new'
@@ -15,6 +15,9 @@ function EventPage({allowEdits=false}) {
 	const [editing, setEditing] = useState(false);
 	const [addResults,setAddResults]=useState(false);
 	const [results,setResults]=useState([]);
+	const [links,setLinks]=useState([]);
+	const [addLinks,setAddLink] = useState(false);
+	const [linkData,setLinkData] = useState({name:"",link:"",date:""})
 
 	useEffect(()=>{
 		if(isNew)
@@ -32,11 +35,32 @@ function EventPage({allowEdits=false}) {
 		if(event.results){
 			setResults(event.results[0])
 		}
+		if(event.relatedLinks){
+			setLinks(event.relatedLinks[0])
+		}
 	},[event]);
 
 	const onChangeHandler = (e) => {
 		e.preventDefault();
 		setEvent({...event, [e.target.name]:e.target.value});
+	}
+
+	const onChangeHandlerLinks = (e) => {
+		e.preventDefault();
+		setLinkData({...linkData, [e.target.name]:e.target.value});
+	}
+
+	const uploadLinks = (e) => {
+		e.preventDefault();
+		axios.post(`http://localhost:5001/api/admin/events/${id}/links`, {relatedLinks:{0:links}}).then(res=>{
+			console.log(res)
+		})
+	}
+
+	const saveLink = (e) => {
+		e.preventDefault();
+		setLinks([...links, linkData])
+		setAddLink(false);
 	}
 	
 	const handleSave = (e) => {
@@ -125,8 +149,6 @@ function EventPage({allowEdits=false}) {
 							<option value="Directo">En Directo</option>
 							<option value="Programado">Programado</option>
 						</select>
-
-						{/* <input className="status" name="status" placeholder="estado" value={event.status} onChange={onChangeHandler}/> */}
 						
 						<input className="sport" name="sport" placeholder="deporte" value={event.sport} onChange={onChangeHandler}/>
 					</div>
@@ -166,6 +188,32 @@ function EventPage({allowEdits=false}) {
 				:allowEdits?<div className="results-controls">
 					<button className="cta" onClick={(e)=>{e.preventDefault(); setAddResults(true)}}>Añadir resultados</button>
 				</div>:null}
+			</div>
+
+			<div className="links">
+				<h1>Eventos relacionados</h1>
+
+				{links.map((link,id)=>{
+					return <Link to={link.path} key={id}>{link.name}</Link>
+				})}
+				
+				{addLinks?
+					<div>
+						<input name="path" placeholder="link" onChange={onChangeHandlerLinks}/>
+						<input name="name" placeholder="nombre" onChange={onChangeHandlerLinks}/>
+						<button className="cta" onClick={saveLink}>guardar</button>
+					</div>
+				:null}
+
+
+				{allowEdits?<div>
+						<button className="cta" onClick={(e)=>{e.preventDefault(); setAddLink(true)}}>+</button>
+						<button className="cta" onClick={uploadLinks}>Subir links</button>
+					</div>
+				:null}
+
+
+
 			</div>
 		</div>
 	);
