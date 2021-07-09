@@ -3,7 +3,7 @@ import axios from "axios"
 import "./LinkPreview.scss";
 import Logo from "../../Assets/Logo.png"
 
-function LinkPreview({data, allowEdits=false}) {
+function LinkPreview({data, allowEdits=false,deleteLink}) {
 	const [previewData,setPreviewData] = useState({});
 
 	useEffect(()=>{
@@ -22,11 +22,7 @@ function LinkPreview({data, allowEdits=false}) {
 			if(!data["platform"])
 				slowDat["domain"] = String(data.url).split("/")[2].replace("www."," ");
 		}).finally(()=>{
-			console.log("done", slowDat)
-
 			setPreviewData({...data, ...slowDat})
-
-
 			// setPreviewData({activeDate: "2021-06-25T12:25:25.000Z",
 			// created: "2021-07-07T03:27:01.891Z",
 			// deleted: null,
@@ -60,6 +56,7 @@ function LinkPreview({data, allowEdits=false}) {
 					<p className="date">{String(previewData.activeDate).slice(0,16).replace("T", " ")}</p>
 				</div>
 			</div>
+			<button className="cta delete" onClick={()=>{deleteLink(data.id)}}>Borrar</button>
 		</div>
 	);
 }

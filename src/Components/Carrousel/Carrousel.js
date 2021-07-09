@@ -16,7 +16,7 @@ function Carrousel({items=[], autoPlay=true}) {
 		if(autoPlay)
 			setInterval(()=>{
 				scrollToNextPage("next")
-			},2500)
+			},5000)
 	},[target])
 
     useEffect(()=>{
