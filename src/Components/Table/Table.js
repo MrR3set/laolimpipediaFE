@@ -43,13 +43,15 @@ function Table({results, saveResults, discardResults, allowEdits=false}) {
 			{allowEdits?
 				<>
 					<TableRow isNew={true} updateEntry={addNewAthlete}/>
+					<div className="controls">
+						<button className="cta" onClick={(e)=>{e.preventDefault(); saveResults(data)}}>Guardar resultados</button>
+						<button className="cta" onClick={discardResults}>Descartar cambios</button> 
+					</div>
 				</>
+				
 			:null}
 
-			<div className="controls">
-				<button className="cta" onClick={(e)=>{e.preventDefault(); saveResults(data)}}>Guardar resultados</button>
-				<button className="cta" onClick={discardResults}>Descartar cambios</button> 
-			</div>
+			
 		</div>
     );
 }

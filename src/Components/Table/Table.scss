@@ -1,13 +1,33 @@
+@import "../../Utils//Variables.scss";
 .table-wrapper{
 
 	input{
 		border: none;
 		border-bottom: 1px solid black;
 		outline: none;
-		margin-right: 1.5rem;
-		font-size: 2.5rem;
+		margin-right: 1.8rem;
+
+		@media (min-width:$breakpoint-phone){
+			font-size: 2rem;
+		}
+		@media (min-width:$breakpoint-tablet){
+			font-size: 2.6rem;
+		}
+		@media (min-width:$breakpoint-laptop){
+			font-size: 3.2rem;
+		}
+		@media (min-width:$breakpoint-laptop){
+			font-size: 3.4rem;
+		}
+
 		&[name=country]{
 			width: 50px;
+		}
+		&[name=name]{
+			width: 70%;
+		}
+		&[name=score]{
+			width: 25%;
 		}
 	}
 
@@ -24,7 +44,7 @@
 
 	.addNew{
 		margin-top: 2.5rem;
-		font-size: 2rem;
+		font-size: rem;
 		padding: 0.4rem 1.5rem;
 	}
 
@@ -39,8 +59,22 @@
 			tr{
 				background-color: #002258;
 				color: white;
-				font-size: 3.2rem;
-				font-weight: bolder;
+				font-size: 1.8rem;
+				font-weight: bold;
+				font-family: Roboto;
+
+				@media (min-width:$breakpoint-phone){
+					font-size: 2rem;
+				}
+				@media (min-width:$breakpoint-tablet){
+					font-size: 2.6rem;
+				}
+				@media (min-width:$breakpoint-laptop){
+					font-size: 3.2rem;
+				}
+				@media (min-width:$breakpoint-laptop){
+					font-size: 3.4rem;
+				}
 
 				th{
 					padding: 0.25rem 0.5rem;
@@ -58,8 +92,18 @@
 		
 		tbody {
 			tr{
-				font-size: 3.2rem;
 				background-color: #fff;
+				font-size: 1.6rem;
+				font-family: Montserrat;
+				@media (min-width:$breakpoint-phone){
+					font-size: 1.8rem;
+				}
+				@media (min-width:$breakpoint-tablet){
+					font-size: 2.2rem;
+				}
+				@media (min-width:$breakpoint-laptop){
+					font-size: 2.6rem;
+				}
 				&:nth-child(even){
 					background-color: rgb(241, 241, 241);
 				}
