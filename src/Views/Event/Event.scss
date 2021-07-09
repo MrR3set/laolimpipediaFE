@@ -1,3 +1,5 @@
+
+@import "../../Utils//Variables.scss";
 .event-wrapper{
 	display: flex;
 	flex-direction: column;
@@ -7,10 +9,17 @@
 	.header{
 		display: flex;
 		text-transform: capitalize;
+		flex-direction: column;
 		margin-bottom: 4rem;
 		padding: 2.5rem 1.5rem;
 		min-height: 20rem;
 		
+		@media (min-width:$breakpoint-tablet){
+			flex-direction: row;
+			margin-bottom: 4rem;
+			padding: 2.5rem 1.5rem;
+			min-height: 20rem;
+		}
 
 		.left{
 			display: flex;
@@ -20,7 +29,6 @@
 			max-width: 800px;
 			width: 100%;
 			padding: 0;
-
 
 			.title{
 				font-size: 4.8rem;
@@ -61,24 +69,41 @@
 			position: relative;
 			flex-wrap: wrap;
 			justify-content: space-between;
-
-			button{
-				position: absolute;
-				// bottom: 0;
-				right: 0;
-				padding: 0.5rem 1.5rem;
-				margin: 2px;
-				font-size: 2.2rem;
-				&.save-controls{
-					top: 0;
+			background-color: white;
+			// clip-path: polygon(0 0, 100% 0%, 100% 100%, 30% 100%);
+			margin-left: auto;
+			@media (min-width:$breakpoint-tablet){
+				width: 60%;
+			}
+			@media (min-width:$breakpoint-desktop){
+				width: 30%;
+			}
+	
+			.controls{
+				display: flex;
+				justify-content: space-between;
+				height: 100%;
+				width: 100%;
+				@media (min-width:$breakpoint-tablet){
+					width: 75%;
+					justify-content: flex-start;
+					flex-direction: column;
 				}
-				&.edit-controls{
-					bottom: 0;
+				@media (min-width:$breakpoint-laptop){
+					width: 60%;
 				}
-				&.delete-controls{
-					top: 0;
-					margin-top: 5rem;
-					background-color: red;
+				.cta{
+					padding: 0.5rem 1.5rem;
+					margin: 2px;
+					font-size: 2.2rem;
+					@media (min-width:$breakpoint-tablet){
+						&:last-child{
+							margin-top: auto;
+						}
+					}
+					&.delete-controls{
+						background-color: red;
+					}
 				}
 			}
 		}

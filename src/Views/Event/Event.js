@@ -136,11 +136,11 @@ function EventPage({allowEdits=false}) {
 
 					<div className="right">
 						<div className="bckg"></div>
-						{allowEdits?<>
+						{allowEdits?<div className="controls">
 							<button className="save-controls cta" onClick={pushUpdate}>Subir cambios</button>
 							<button className="delete-controls cta" onClick={deleteEvent}>Borrar evento</button>
 							<button className="edit-controls cta" onClick={(e)=>{e.preventDefault(); setEditing(true)}}>Editar</button>
-						</>:null}
+						</div>:null}
 					</div>
 
 				</>}
