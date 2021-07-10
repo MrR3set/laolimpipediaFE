@@ -44,6 +44,10 @@ function EventPage({allowEdits=false}) {
 	
 	return (
 		<div className="livePage-wrapper page">
+
+			<div className="header">
+				<h1>Como seguir los juegos con nosotros?</h1>
+			</div>
  
 			{links.map((linkData,i)=>{
 				return <LinkPreview data={linkData} deleteLink={deleteLink} allowEdits={allowEdits} key={i}/>
