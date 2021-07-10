@@ -4,6 +4,7 @@ import EventPreview from "../../Components/EventPreview/EventPreview";
 import { axiosWithAuth } from "../../Utils/axiosWithAuth";
 import {useEffect, useState} from 'react';
 import {Link} from "react-router-dom"
+import DatePicker from '../../Components/Datepicker/DatePicker';
 
 function EventsPage({allowEdits=false}) {
 	const [events,setEvents] = useState([])
@@ -21,6 +22,7 @@ function EventsPage({allowEdits=false}) {
 					<Link to="/admin/eventos/new" className="cta">Añadir evento</Link>
 				</div>
 			:null}
+			<DatePicker></DatePicker>
 			<div className="table-wrapper">
 				<table>
 					<thead>

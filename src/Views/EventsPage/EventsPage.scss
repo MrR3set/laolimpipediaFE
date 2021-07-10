@@ -14,9 +14,7 @@
 
 
 	.table-wrapper	{
-		margin-top: 4rem;
 		overflow-x: auto;
-		// Remove when adding top calendar picker
 		table{
 			width: 100%;
 			border-spacing: 0;
@@ -26,7 +24,7 @@
 			
 			thead{
 				tr{
-					background-color: #002258;
+					background-color: #495867;
 					color: white;
 					font-size: 1.8rem;
 					font-weight: bold;
@@ -44,14 +42,9 @@
 						font-size: 3.4rem;
 					}
 					
-
 					th{
 						padding: 0.25rem 1rem;
-						&:first-child{
-							border-top-left-radius: 5px;
-						}
 						&:last-child{
-							border-top-right-radius: 5px;
 							width: 15%;
 						}
 					}

@@ -1,0 +1,21 @@
+.date-picker-wrapper{
+	display: flex;
+	flex-wrap: nowrap;
+	overflow-x: auto;
+	user-select: none;
+	.date-wrapper{
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		width: 100%;
+		padding: 0.5rem 1rem;
+		font-size: 1.8rem;
+		font-weight: bold;
+		font-family: Roboto;
+		color: white;
+		background-color: #002258;
+		&:nth-child(odd){
+			background-color: #314FE5;
+		}
+	}
+}
