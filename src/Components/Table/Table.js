@@ -31,12 +31,13 @@ function Table({results, saveResults, discardResults, allowEdits=false}) {
 					<tr>
 						<th>nombre</th>
 						<th>resultado</th>
+						<th>posicion</th>
 						{allowEdits?<th></th>:null}
 					</tr>
 				</thead>
 				<tbody>
-					{data.sort((a,b) => Number(a.score) < Number(b.score) ? 1 : -1).map(({name,country, score},i)=>{
-						return <TableRow name={name} country={country} score={score} key={i} index={i} updateEntry={updateEntry} deleteEntry={deleteEntry} allowEdits={allowEdits}/>
+					{data.sort((a,b) => Number(a.score) < Number(b.score) ? 1 : -1).map(({name,country, score, position},i)=>{
+						return <TableRow name={name} country={country} score={score} key={i} index={i} position={position} updateEntry={updateEntry} deleteEntry={deleteEntry} allowEdits={allowEdits}/>
 					})}
 				</tbody>
         	</table>
@@ -58,10 +59,10 @@ function Table({results, saveResults, discardResults, allowEdits=false}) {
 
 export default Table;
 
-const TableRow = ({name,country, allowEdits, score, index, updateEntry, isNew=false, deleteEntry}) => {
+const TableRow = ({name,country, allowEdits, score, index, updateEntry, isNew=false, deleteEntry, position}) => {
 
 	const [editing,setEditing] = useState(false);
-	const [newInfo, setNewInfo] = useState({name:'', country:'', score:''})
+	const [newInfo, setNewInfo] = useState({name:'', country:'es', score:'', position:''})
 
 	useEffect(()=>{
 		if(isNew)
@@ -115,9 +116,16 @@ const TableRow = ({name,country, allowEdits, score, index, updateEntry, isNew=fa
 			</td> 	
 			<td>
 				{editing && !isNew?
-					<input name="score" value={newInfo.score} placeholder="score"  onChange={onChangeHandler}/>
+					<input name="score" value={newInfo.score} placeholder="Marcador"  onChange={onChangeHandler}/>
 					:
 					score
+				}
+			</td>
+			<td>
+				{editing && !isNew?
+					<input name="position" value={newInfo.score} placeholder="Posicion"  onChange={onChangeHandler}/>
+					:
+					position
 				}
 			</td>
 
