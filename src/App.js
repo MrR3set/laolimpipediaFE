@@ -11,6 +11,7 @@ import {useEffect, useState} from "react";
 import { axiosWithAuth } from "./Utils/axiosWithAuth";
 import { ReactComponent as Spinner } from './Assets/puff.svg'
 import './App.scss';
+import Contact from "./Views/Contact/Contact";
 
 function App() {
 
@@ -28,9 +29,9 @@ function App() {
 				// window.localStorage.removeItem("token")
 			}
 		}).finally(()=>{
-			setIsLoading(false);
 			setTimeout(()=>{
-			},Math.floor(Math.random() * 1500))
+				setIsLoading(false);
+			},Math.floor(Math.random() * 2500))
 		})
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	},[])
@@ -46,6 +47,7 @@ function App() {
 				<Route path="/eventos/:id" component={Event}/>
 				<Route path="/medallero" component={MedalsPage}/>
 				<Route path="/directo" component={LivePage}/>
+				<Route path="/contacto" component={Contact}/>
 				
 				<PrivateRoute exact path="/admin/eventos" component={EventsPage} authorized={authorized}/>
 				<PrivateRoute path="/admin/eventos/:id" component={Event} authorized={authorized}/>

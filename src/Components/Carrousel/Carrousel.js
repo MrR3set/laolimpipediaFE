@@ -23,6 +23,7 @@ function Carrousel({items=[], autoPlay=true}) {
 
     useEffect(()=>{
         target.current.addEventListener('scroll', scrollListener);
+		// eslint-disable-next-line
         return () => target.current && target.current.removeEventListener('scroll', scrollListener);
     })
 

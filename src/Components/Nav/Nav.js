@@ -32,8 +32,8 @@ function Nav() {
 					<NavLink to="/admin/eventos" onClick={toggleMenu}>Horarios</NavLink>
 					<NavLink to="/admin/medallero" onClick={toggleMenu}>Medallero</NavLink>
 					<NavLink to="/admin/directo" onClick={toggleMenu}>En Directo</NavLink>
-					<NavLink to="/admin/guia" onClick={toggleMenu}>Guia</NavLink>
-					<NavLink to="/admin/contacto" onClick={toggleMenu}>Contacto</NavLink>
+					<NavLink to="/guia" onClick={toggleMenu}>Guia</NavLink>
+					<NavLink to="/contacto" onClick={toggleMenu}>Contacto</NavLink>
 				</div>
 			</div>
 
