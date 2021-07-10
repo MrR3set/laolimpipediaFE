@@ -32,7 +32,7 @@ function DatePicker({startDate='2021-07-22',endDate='2021-08-08', setFilter, fil
 		<div className="date-picker-wrapper">
 			{dates.map((d,i)=>{
 				return <div className="date-wrapper" onClick={()=>{filterDate(d)}}>
-					<DateElement date={d} key={i} />
+					<DateElement date={d} key={i} active={d===filter}/>
 				</div>
 			})}
 
@@ -44,7 +44,7 @@ export default DatePicker;
 
 
 
-const DateElement = ({date}) => {
+const DateElement = ({date, active}) => {
 	
 	const [day,setDay] = useState("");
 	const days = ["Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"];
@@ -53,12 +53,14 @@ const DateElement = ({date}) => {
 		setDay(String(days[new Date(date).getDay()]))
 	},[])
 
+	console.log(active)
+
 	return (
 		<>
 			<div className="day">
 				{day.slice(0,3)}
 			</div>
-			<div className="month">
+			<div className={`month ${active?"active":""}`}>
 				{String(date).slice(8,10)}
 			</div>
 		</>

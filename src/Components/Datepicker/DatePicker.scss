@@ -13,9 +13,25 @@
 		font-weight: bold;
 		font-family: Roboto;
 		color: white;
+		text-align: center;
 		background-color: #002258;
 		&:nth-child(odd){
 			background-color: #314FE5;
 		}
+
+		.active{
+			position: relative;
+			width: 100%;
+			&::after{
+				content: "";
+				position: absolute;
+				width: 100%;
+				height: 2px;
+				background-color: rgb(255, 255, 255);
+				bottom: -2px;
+				left: 0;	
+			}
+		}
+		
 	}
 }
