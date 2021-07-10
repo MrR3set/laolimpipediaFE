@@ -93,7 +93,7 @@ function Carrousel({items=[], autoPlay=true}) {
 
 			<div className='scrollProgress'>
 				{[...Array(scrollSize)].map((e,i)=>{
-					return <div className={`step ${scrollProgress===i?"active":''}`}  onClick={()=>{scrollToPage(i)}} ></div>
+					return <div className={`step ${scrollProgress===i?"active":''}`}  onClick={()=>{scrollToPage(i)}} key={i}></div>
 				})}
 			</div>
 

@@ -32,8 +32,8 @@ function DatePicker({startDate='2021-07-22',endDate='2021-08-08', setFilter, fil
 	return (
 		<div className="date-picker-wrapper">
 			{dates.map((d,i)=>{
-				return <div className="date-wrapper" onClick={()=>{filterDate(d)}}>
-					<DateElement date={d} key={i} active={d===filter}/>
+				return <div className="date-wrapper" onClick={()=>{filterDate(d)}} key={i}>
+					<DateElement date={d} active={d===filter}/>
 				</div>
 			})}
 
