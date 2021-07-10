@@ -53,8 +53,6 @@ const DateElement = ({date, active}) => {
 		setDay(String(days[new Date(date).getDay()]))
 	},[])
 
-	console.log(active)
-
 	return (
 		<>
 			<div className="day">

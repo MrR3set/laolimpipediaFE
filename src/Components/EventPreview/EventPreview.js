@@ -1,15 +1,23 @@
 
 import React from 'react';
-import {useHistory, Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-function EventPreview({id, date, sport, name, status, results}) {
+function EventPreview({id, date, sport, name, status, results, setFilter, filter}) {
+
+	const filterSport = () => {
+		if(filter===sport){
+			setFilter("");
+		}else{	
+			setFilter(sport);
+		}
+	}
 
 	return (
 		<tr className="eventPreview-wrapper">
 			<td>
 				{date}
 			</td>
-			<td>
+			<td onClick={filterSport}>
 				{sport}
 			</td>
 			<td>
