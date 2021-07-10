@@ -4,7 +4,39 @@
 	flex-direction: column;
 
 	.header{
-		margin: 2rem auto 6rem;
+		width: 100%;
+		margin: 3rem auto 6rem;
+		text-align: center;
+		position: relative;
+		padding: 2.5rem 2rem;
+		@media(min-width:$breakpoint-tablet){
+			padding: 8.5rem 2rem;
+		}
+		@media(min-width:$breakpoint-laptop){
+			padding: 8.5rem 2rem;
+		}
+		.background{
+			position: absolute;
+			top: 0;
+			left: 0;
+			object-fit: cover;
+			height: 100%;
+			width: 100%;
+			z-index: -1;
+			filter: brightness(80%);
+		}
+		h1{
+			color: white;
+			z-index: 1;
+			font-size: 4.2rem;
+			font-family: Roboto;
+			@media(min-width:$breakpoint-tablet){
+				font-size: 5.5rem;
+			}
+			@media(min-width:$breakpoint-laptop){
+				font-size: 7.5rem;
+			}
+		}
 	}
 
 	.table-wrapper{
