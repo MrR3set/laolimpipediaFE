@@ -19,9 +19,11 @@ function LinkPreview({data, allowEdits=false,deleteLink}) {
 					slowDat[tag]=data[tag];
 				}
 			})
-			if(!data["platform"])
-				slowDat["domain"] = String(data.url).split("/")[2].replace("www."," ");
 		}).finally(()=>{
+			if(!data["domain"])
+				slowDat["domain"] = String(data.url).split("/")[2].replace("www."," ");
+			else
+				data["domain"] = String(data.url).split("/")[2].replace("www."," ");
 			setPreviewData({...data, ...slowDat})
 		})
 		// eslint-disable-next-line react-hooks/exhaustive-deps
@@ -42,7 +44,7 @@ function LinkPreview({data, allowEdits=false,deleteLink}) {
 					<p>{previewData.description}</p>
 				</div>
 				<div className="info">
-					<p className="domain">{previewData.domain}Domain</p>
+					<p className="domain">{previewData.domain}</p>
 					<p className="date">{String(previewData.activeDate).slice(0,16).replace("T", " ")}</p>
 				</div>
 			</div>
