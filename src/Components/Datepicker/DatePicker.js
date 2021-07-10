@@ -3,12 +3,8 @@ import { useEffect, useState } from 'react';
 import './DatePicker.scss';
 
 
-function DatePicker({startDate='2021-07-22',endDate='2021-08-08'}) {
-
-
+function DatePicker({startDate='2021-07-22',endDate='2021-08-08', setFilter, filter}) {
 	const [dates,setDates] = useState([])
-
-
 
 	useEffect(()=>{
 		let arr = [];
@@ -23,11 +19,21 @@ function DatePicker({startDate='2021-07-22',endDate='2021-08-08'}) {
 		setDates(arr);
 	},[])
 
+	const filterDate = (date) =>{
+		if(date===filter){
+			setFilter("")
+		}else{
+			setFilter(date);
+		}
+	}
+
 
 	return (
 		<div className="date-picker-wrapper">
 			{dates.map((d,i)=>{
-				return <DateElement date={d} key={i}/>
+				return <div className="date-wrapper" onClick={()=>{filterDate(d)}}>
+					<DateElement date={d} key={i} />
+				</div>
 			})}
 
 		</div>
@@ -40,7 +46,6 @@ export default DatePicker;
 
 const DateElement = ({date}) => {
 	
-	
 	const [day,setDay] = useState("");
 	const days = ["Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"];
 
@@ -49,15 +54,14 @@ const DateElement = ({date}) => {
 	},[])
 
 	return (
-		<div className="date-wrapper">
+		<>
 			<div className="day">
 				{day.slice(0,3)}
 			</div>
 			<div className="month">
 				{String(date).slice(8,10)}
 			</div>
-		</div>
-
+		</>
 	);
 
 
