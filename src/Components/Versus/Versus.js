@@ -9,9 +9,9 @@ function Versus({results, saveResults, allowEdits=false, discardResults}) {
 	const [data,setData] = useState([{country:'es', name:'', score:""},{country:'es', name:'', score:''}]);
 
 	useEffect(()=>{
-
 		if(results && results.length===2)
 			setData(results)
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	},[]);
 
 	const updateEntry = (value,index) => {

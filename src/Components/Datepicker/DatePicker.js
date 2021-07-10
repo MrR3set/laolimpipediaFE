@@ -17,6 +17,7 @@ function DatePicker({startDate='2021-07-22',endDate='2021-08-08', setFilter, fil
 			currDate.setDate(currDate.getDate()+1)
 		}
 		setDates(arr);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	},[])
 
 	const filterDate = (date) =>{
@@ -51,6 +52,7 @@ const DateElement = ({date, active}) => {
 
 	useEffect(()=>{
 		setDay(String(days[new Date(date).getDay()]))
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	},[])
 
 	return (

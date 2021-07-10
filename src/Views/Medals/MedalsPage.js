@@ -12,6 +12,7 @@ function MedalsPage({allowEdits=false}) {
 		axiosWithAuth().get("admin/medals").then(res=>{
 			setMedalData(res.data);
 		})
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	},[])
 
 	const uploadChanges = (id, data) => {
@@ -20,7 +21,6 @@ function MedalsPage({allowEdits=false}) {
 		}).catch(err=>{
 			console.log(err)
 		})
-
 	}
 
 	return (
@@ -66,6 +66,7 @@ const TableRow = ({countryCode,country, allowEdits, gold, silver, bronce, id, up
 
 	useEffect(()=>{
 		setNewInfo({gold, silver, bronce})
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	},[]);
 
 	const onChangeHandler = (e) => {

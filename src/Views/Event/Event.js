@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 function EventPage({allowEdits=false}) {
 	const {id} = useParams();
 	const history = useHistory()
-	const isNew = id == 'new'
+	const isNew = id === 'new'
 
 	const [event,setEvent] = useState({});
 	const [editing, setEditing] = useState(false);
@@ -29,6 +29,7 @@ function EventPage({allowEdits=false}) {
 			axiosWithAuth().get(`admin/events/${id}`).then(res=>{
 				setEvent(res.data);
 			})
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	},[]);
 
 	useEffect(()=>{

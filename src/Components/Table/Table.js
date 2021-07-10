@@ -68,10 +68,12 @@ const TableRow = ({name,country, allowEdits, score, index, updateEntry, isNew=fa
 			setEditing(true)
 		else
 			setNewInfo({name,country,score:score?score:0})
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	},[]);
 
 	useEffect(()=>{
 		setNewInfo({name,country,score:score?score:0});
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	},[editing]);
 
 	const onChangeHandler = (e) => {

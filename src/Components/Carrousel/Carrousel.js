@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Carrousel.scss';
 import { Link } from "react-router-dom"
 
@@ -10,6 +10,7 @@ function Carrousel({items=[], autoPlay=true}) {
 
 	useEffect(()=>{
 		setScrollSize(items.length);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	},[])
 
 	useEffect(()=>{
@@ -17,6 +18,7 @@ function Carrousel({items=[], autoPlay=true}) {
 			setInterval(()=>{
 				scrollToNextPage("next")
 			},5000)
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	},[target])
 
     useEffect(()=>{
@@ -64,7 +66,7 @@ function Carrousel({items=[], autoPlay=true}) {
         const element = target.current;
         const pageSize = element.children[0].offsetWidth; 
 
-		if(direction==="prev" && scrollProgress==0){
+		if(direction==="prev" && scrollProgress===0){
 			scrollToPage(items.length)
 		}else if(direction==="next" && scrollProgress>=items.length-1){
 			scrollToPage(0);
@@ -84,7 +86,7 @@ function Carrousel({items=[], autoPlay=true}) {
 
 			<div className="carrouselView" ref={target}>
 				{items.map(({name,path,imageUrl},i)=>{
-					return <CarrouselItem name={name} key={i} imageUrl={imageUrl} path={path} key={i}/>
+					return <CarrouselItem name={name} imageUrl={imageUrl} path={path} key={i}/>
 				})}
 			</div>
 
@@ -113,8 +115,8 @@ export default Carrousel;
 const CarrouselItem = ({imageUrl,path="/", name=""}) => {
 	return (
 		<div className="carrousel-Item">
-			<img className="foreground" src={imageUrl}></img>
-			<img className="background" src={imageUrl}></img>
+			<img className="foreground" src={imageUrl} alt="Carrousel foreground"></img>
+			<img className="background" src={imageUrl} alt="Carrousel background"></img>
 
 			<div className="content">
 				<Link to={path} className="title">

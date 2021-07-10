@@ -1,5 +1,5 @@
 
-import React, {useEffect, useRef, useState} from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom'
 import "./Nav.scss"
 
@@ -22,7 +22,7 @@ function Nav() {
 	return (
 		<div className="nav-wrapper">
 			<div className="logo">
-				<img src={Logo}></img>
+				<img src={Logo} alt="Logo"/>
 				<h1>La Olimpipedia</h1>
 			</div>
 
