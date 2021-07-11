@@ -2,7 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function EventPreview({id, date, sport, name, status, results, setFilter, filter}) {
+function EventPreview({id, date, sport, name, status, results, setFilter, filter, allowEdits}) {
 
 	const filterSport = () => {
 		if(filter===sport){
@@ -27,7 +27,7 @@ function EventPreview({id, date, sport, name, status, results, setFilter, filter
 				{status}
 			</td>
 			<td>
-				<Link className="cta eventlink" to={"/admin/eventos/" + id }>{results ? "Resultados" : "Participantes"}</Link>
+				<Link className="cta eventlink" to={allowEdits?'/admin':'/eventos/' + id}>{results ? "Resultados" : "Participantes"}</Link>
 			</td>
 		</tr>
 	)

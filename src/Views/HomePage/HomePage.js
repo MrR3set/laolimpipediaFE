@@ -20,7 +20,7 @@ const HomePageData = [
 		imageUrl:"https://images.pexels.com/photos/236937/pexels-photo-236937.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
 	},
 	{
-		name:"¿Como seguir los juegos con nosotros?", 
+		name:"¿CÓMO seguir los juegos con nosotros?", 
 		path:"/admin/directo",
 		imageUrl:"https://images.unsplash.com/photo-1541252260730-0412e8e2108e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=622&q=80"
 	},
