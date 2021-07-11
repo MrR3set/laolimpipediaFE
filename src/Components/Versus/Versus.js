@@ -26,9 +26,9 @@ function Versus({results, saveResults, allowEdits=false, discardResults}) {
 				})}
 			</div>
 
-			<div className="results-controls">
+			{allowEdits?<div className="results-controls">
 				<button className="cta" onClick={(e)=>{e.preventDefault(); saveResults(data)}}>Guardar resultados</button>
-			</div>
+			</div>:null}
 		</div>
     );
 }
