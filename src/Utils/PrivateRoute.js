@@ -2,7 +2,6 @@ import React from "react";
 import {Route,Redirect} from "react-router-dom"
 
 const PrivateRoute = ({component:Component, authorized, path,...rest})=>{
-	console.log(authorized, String(path).replace("/admin", ""))
     return <Route
         {...rest}
         render={(props)=>{
