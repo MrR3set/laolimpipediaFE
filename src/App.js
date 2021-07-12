@@ -35,7 +35,7 @@ function App() {
 	return (!isLoading?
 		<div className="App">
 
-			<Nav authorized={authorized}/>
+			<Nav allowEdits={authorized}/>
 
 			<Switch>
 				<Route path="/eventos/:id" component={Event}/>
