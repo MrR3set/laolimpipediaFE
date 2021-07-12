@@ -30,9 +30,6 @@ function App() {
 			}
 		}).finally(()=>{
 			setIsLoading(false);
-			setTimeout(()=>{
-				setIsLoading(false);
-			},Math.floor(Math.random() * 2500))
 		})
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	},[])
