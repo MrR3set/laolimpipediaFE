@@ -1,0 +1,27 @@
+.login-wrapper{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	min-height: 75vh;
+	border: 1px solid red;
+	h1{
+		margin-bottom: 6rem;
+		font-family: Roboto;
+		font-weight: 300;
+	}
+	.form{
+		min-width: 300px;
+		display: flex;
+		flex-direction: column;
+		// margin: 0 auto;
+		width: 60%;
+		input{
+			border: none;
+			border-bottom: 1px solid black;
+			outline: none;
+			margin-bottom: 3.8rem;
+			font-size: 2rem;
+		}
+	}
+}
