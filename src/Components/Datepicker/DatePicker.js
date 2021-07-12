@@ -21,9 +21,7 @@ function DatePicker({startDate='2021-07-22',endDate='2021-08-08', setFilter, fil
 	},[])
 
 	const filterDate = (date) =>{
-		if(date===filter){
-			setFilter("")
-		}else{
+		if(date!==filter){
 			setFilter(date);
 		}
 	}

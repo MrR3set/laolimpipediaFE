@@ -8,7 +8,8 @@ import DatePicker from '../../Components/Datepicker/DatePicker';
 
 function EventsPage({allowEdits=false}) {
 	const [events,setEvents] = useState([]);
-	const [dateFilter,setDateFilter] = useState("2021-06-30");
+	const [dateFilter,setDateFilter] = useState('');
+	const [initialDate, setInitialDate]= useState() // Date that will be filtered on first load and when date is cleared
 	const [sportFilter,setSportFilter] = useState("");
 
 	useEffect(()=>{
@@ -18,11 +19,36 @@ function EventsPage({allowEdits=false}) {
 	},[])
 
 	useEffect(()=>{
-		setDateFilter("");
+		const today = new Date(Date.now())
+		const firstDay = (new Date('2021-07-22'))
+		const lastDay = (new Date('2021-08-08'))
+
+		if(today < firstDay){
+			setInitialDate(firstDay.toISOString().slice(0,10))
+		}else if(today > lastDay){
+			setInitialDate(lastDay.toISOString().slice(0,10))
+		}else{
+			setInitialDate(today.toISOString(0,10))
+		}
+	},[])
+
+	useEffect(()=>{
+		setDateFilter(initialDate);
+	},[initialDate])
+
+	useEffect(()=>{
+		if(sportFilter==="" && dateFilter===""){
+			setDateFilter(initialDate);
+		}else if(sportFilter==="" && dateFilter!==""){
+			setDateFilter(dateFilter);
+		}else{
+			setDateFilter("");
+		}
 	},[sportFilter]);
 
 	useEffect(()=>{
-		setSportFilter("")
+		if(dateFilter!=="")
+			setSportFilter("")
 	},[dateFilter]);
 
 
@@ -33,7 +59,7 @@ function EventsPage({allowEdits=false}) {
 				<img className="background" src="https://images.unsplash.com/photo-1569517282132-25d22f4573e6?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1433&q=80" alt="Carrousel background"></img>
 				<h1>Horarios</h1>
 			</div>
-			
+
 			{allowEdits?
 				<div className="controls">
 					<Link to="/admin/eventos/new" className="cta">Añadir evento</Link>
@@ -46,7 +72,8 @@ function EventsPage({allowEdits=false}) {
 						<tr>
 							<th>Hora</th>
 							<th>Deporte</th>
-							<th>Nombre</th>
+							<th>Evento</th>
+							{/* <th>Ronda</th> */}
 							<th>Estado</th>
 							<th></th>
 						</tr>
@@ -54,7 +81,7 @@ function EventsPage({allowEdits=false}) {
 					<tbody>
 						{events.filter(e=>	String(e.date).slice(0,10) === dateFilter || dateFilter==="" ).filter(e=>	String(e.sport) === sportFilter || sportFilter==="" ).map((event,index)=>{
 							return <EventPreview id={event.id} name={event.name} sport={event.sport} setFilter={setSportFilter} filter={sportFilter}
-								status={event.status} date={String(event.date).slice(11,16).replace("T", " ")} results={event.hasResults} key={index}/>
+								status={event.status} date={String(event.date).slice(11,16).replace("T", " ")} results={event.hasResults} key={index} allowEdits={allowEdits}/>
 						})}
 					</tbody>
 				</table>
