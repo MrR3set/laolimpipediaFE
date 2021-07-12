@@ -25,10 +25,11 @@ function App() {
 			setAuthorized(true);
 		}).catch(err=>{
 			if(err.response.status===401){
-				console.log(history)//replace location pathname admin to nothing...
-				// window.localStorage.removeItem("token")
+				// console.log(history)//replace location pathname admin to nothing...
+				window.localStorage.removeItem("token")
 			}
 		}).finally(()=>{
+			setIsLoading(false);
 			setTimeout(()=>{
 				setIsLoading(false);
 			},Math.floor(Math.random() * 2500))
@@ -43,14 +44,14 @@ function App() {
 			<Nav></Nav>
 
 			<Switch>
-				<Route path="/eventos" component={EventsPage}/>
 				<Route path="/eventos/:id" component={Event}/>
+				<Route path="/eventos" component={EventsPage}/>
 				<Route path="/medallero" component={MedalsPage}/>
 				<Route path="/directo" component={LivePage}/>
 				<Route path="/contacto" component={Contact}/>
 				
-				<PrivateRoute exact path="/admin/eventos" component={EventsPage} authorized={authorized}/>
 				<PrivateRoute path="/admin/eventos/:id" component={Event} authorized={authorized}/>
+				<PrivateRoute exact path="/admin/eventos" component={EventsPage} authorized={authorized}/>
 				<PrivateRoute path="/admin/medallero" component={MedalsPage} authorized={authorized}/>
 				<PrivateRoute path="/admin/directo" component={LivePage} authorized={authorized}/>
 				<Route  path="/" component={HomePage}></Route>
