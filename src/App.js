@@ -1,5 +1,5 @@
 
-import { Route, Switch, useHistory } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import EventsPage from './Views/EventsPage/EventsPage';
 import LivePage from './Views/LivePage/LivePage';
 import Event from './Views/Event/Event';
@@ -15,8 +15,6 @@ import Contact from "./Views/Contact/Contact";
 
 function App() {
 
-	const history = useHistory();
-	
 	const [authorized,setAuthorized] = useState(false);
 	const [isLoading,setIsLoading] = useState(true);
 
@@ -25,7 +23,6 @@ function App() {
 			setAuthorized(true);
 		}).catch(err=>{
 			if(err.response.status===401){
-				// console.log(history)//replace location pathname admin to nothing...
 				window.localStorage.removeItem("token")
 			}
 		}).finally(()=>{
@@ -38,7 +35,7 @@ function App() {
 	return (!isLoading?
 		<div className="App">
 
-			<Nav></Nav>
+			<Nav authorized={authorized}/>
 
 			<Switch>
 				<Route path="/eventos/:id" component={Event}/>
