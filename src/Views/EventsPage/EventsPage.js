@@ -73,7 +73,7 @@ function EventsPage({allowEdits=false}) {
 							<th>Hora</th>
 							<th>Deporte</th>
 							<th>Evento</th>
-							{/* <th>Ronda</th> */}
+							<th>Ronda</th>
 							<th>Estado</th>
 							<th></th>
 						</tr>
@@ -81,7 +81,7 @@ function EventsPage({allowEdits=false}) {
 					<tbody>
 						{events.filter(e=>	String(e.date).slice(0,10) === dateFilter || dateFilter==="" ).filter(e=>	String(e.sport) === sportFilter || sportFilter==="" ).map((event,index)=>{
 							return <EventPreview id={event.id} name={event.name} sport={event.sport} setFilter={setSportFilter} filter={sportFilter}
-								status={event.status} date={String(event.date).slice(11,16).replace("T", " ")} results={event.hasResults} key={index} allowEdits={allowEdits}/>
+								status={event.status} date={String(event.date).slice(11,16).replace("T", " ")} results={event.hasResults} key={index} allowEdits={allowEdits} round={event.round}/>
 						})}
 					</tbody>
 				</table>

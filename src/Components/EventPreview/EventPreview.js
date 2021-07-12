@@ -2,7 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function EventPreview({id, date, sport, name, status, results, setFilter, filter, allowEdits}) {
+function EventPreview({id, date, sport, name, status, results, setFilter, filter, allowEdits, round}) {
 
 	const filterSport = () => {
 		if(filter===sport){
@@ -22,6 +22,9 @@ function EventPreview({id, date, sport, name, status, results, setFilter, filter
 			</td>
 			<td>
 				{name}
+			</td>
+			<td>
+				{round}
 			</td>
 			<td>
 				{status}
