@@ -12,6 +12,7 @@ import { axiosWithAuth } from "./Utils/axiosWithAuth";
 import { ReactComponent as Spinner } from './Assets/puff.svg'
 import './App.scss';
 import Contact from "./Views/Contact/Contact";
+import LoginPage from "./Views/Admin/Login/Login";
 
 function App() {
 
@@ -38,6 +39,7 @@ function App() {
 			<Nav allowEdits={authorized}/>
 
 			<Switch>
+				<Route path="/auth/admin/login" component={LoginPage}></Route>
 				<Route path="/eventos/:id" component={Event}/>
 				<Route path="/eventos" component={EventsPage}/>
 				<Route path="/medallero" component={MedalsPage}/>
@@ -49,6 +51,7 @@ function App() {
 				<PrivateRoute path="/admin/medallero" component={MedalsPage} authorized={authorized}/>
 				<PrivateRoute path="/admin/directo" component={LivePage} authorized={authorized}/>
 				<Route  path="/" component={HomePage}></Route>
+
 			</Switch>
 			
 		</div>:<div className="loader" >
