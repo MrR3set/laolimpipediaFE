@@ -39,7 +39,9 @@ function App() {
 			<Nav allowEdits={authorized}/>
 
 			<Switch>
-				<Route path="/auth/admin/login" component={LoginPage}></Route>
+				<Route path="/auth/admin/login">
+					<LoginPage setAuthorized={setAuthorized}/>
+				</Route>
 				<Route path="/eventos/:id" component={Event}/>
 				<Route path="/eventos" component={EventsPage}/>
 				<Route path="/medallero" component={MedalsPage}/>
