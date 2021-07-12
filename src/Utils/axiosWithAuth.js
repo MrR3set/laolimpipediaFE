@@ -3,7 +3,7 @@ import axios from "axios"
 export const axiosWithAuth = () => {
     const token = window.localStorage.getItem("token")
     return axios.create({
-        baseURL:"http://localhost:5001/api",
+        baseURL:"https://laolimpipedia-be-testing.herokuapp.com/api",
         headers:{
             authorization:token
         }
