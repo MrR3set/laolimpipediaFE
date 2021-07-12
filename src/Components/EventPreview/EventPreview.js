@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, {useEffect} from 'react';
 import { Link } from 'react-router-dom';
 
 function EventPreview({id, date, sport, name, status, results, setFilter, filter, allowEdits, round}) {
@@ -27,10 +27,10 @@ function EventPreview({id, date, sport, name, status, results, setFilter, filter
 				{round}
 			</td>
 			<td>
-				{status}
+				{status==="Directo"?"En directo":status}
 			</td>
 			<td>
-				<Link className="cta eventlink" to={allowEdits?'/admin':'/eventos/' + id}>{results ? "Resultados" : "Participantes"}</Link>
+				<Link className={`cta eventlink ${status}`} to={(allowEdits?'/admin/eventos/':'/eventos/') + id}>Resultados</Link>
 			</td>
 		</tr>
 	)
