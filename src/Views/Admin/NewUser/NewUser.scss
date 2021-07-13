@@ -1,0 +1,40 @@
+.login-wrapper{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	min-height: 75vh;
+	h1{
+		margin-bottom: 6rem;
+		font-family: Roboto;
+		font-weight: 300;
+	}
+	.form{
+		min-width: 300px;
+		display: flex;
+		flex-direction: column;
+		width: 80%;
+		input{
+			border: none;
+			border-bottom: 1px solid black;
+			outline: none;
+			margin-bottom: 3.8rem;
+			font-size: 2rem;
+		}
+		.password{
+			display: flex;
+			width: 100%;
+			height: 100%;
+			justify-content: space-between;
+			margin-bottom: 3.8rem;
+			input[name=password]{
+				width: 100%;
+				margin-bottom: 0;
+			}
+
+			.cta{
+				padding: 0.5rem 1rem;
+			}
+		}
+	}
+}

@@ -13,6 +13,7 @@ import { ReactComponent as Spinner } from './Assets/puff.svg'
 import './App.scss';
 import Contact from "./Views/Contact/Contact";
 import LoginPage from "./Views/Admin/Login/Login";
+import NewUser from "./Views/Admin/NewUser/NewUser";
 
 function App() {
 
@@ -52,6 +53,9 @@ function App() {
 				<PrivateRoute exact path="/admin/eventos" component={EventsPage} authorized={authorized}/>
 				<PrivateRoute path="/admin/medallero" component={MedalsPage} authorized={authorized}/>
 				<PrivateRoute path="/admin/directo" component={LivePage} authorized={authorized}/>
+
+				<PrivateRoute path="/auth/admin/newUser" component={NewUser} authorized={authorized}/>
+
 				<Route  path="/" component={HomePage}></Route>
 
 			</Switch>
