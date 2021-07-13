@@ -115,6 +115,9 @@
 							width: 5%;	
 							text-align: center;
 						}
+						&:nth-child(2){
+							cursor: pointer;
+						}
 						a.eventlink{
 							font-size: 1.4rem;
 							padding: 0.4rem 0.75rem;
