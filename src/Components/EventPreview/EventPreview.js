@@ -2,9 +2,7 @@
 import React, {useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
 
-function EventPreview({id, time, date, sport, name, status, results, setFilter, filter, allowEdits, round, isFiltered=false}) {
-
-	console.log(isFiltered)
+function EventPreview({id, time, date, sport, name, status, setFilter, filter, allowEdits, round, isFiltered=false}) {
 
 	const filterSport = () => {
 		if(filter===sport){
