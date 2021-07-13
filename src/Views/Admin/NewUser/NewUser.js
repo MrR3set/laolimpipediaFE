@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react"
 import {axiosWithAuth} from '../../../Utils/axiosWithAuth';
 import './NewUser.scss';
+import Copy from "../../../Assets/Copy";
 
 function NewUser() {
 
@@ -40,27 +41,48 @@ function NewUser() {
 		}
 		setNewUserInfo({...userNewInfo, password:nPass})
 	}
+
+	const copyInformation = () => {
+		const el = document.createElement('textarea');
+		el.value = `Usuario: ${userData.username}\nContraseña: ${userData.password}`;
+		document.body.appendChild(el);
+		el.select();
+		document.execCommand('copy');
+		document.body.removeChild(el);
+	}
 	
 	return (
 		<div className="new-user-wrapper page">
-			<h1>Crear nuevo usuario</h1>
-			{userData?<div className="user-info">
-				<p>Usuario: {userData.username}</p>
-				<p>Contraseña: {userData.password}</p>
-			</div>:<div className="form">
-				<input name="email" onChange={changeHandler} type="email" placeholder="Correo electronico"/>
-				<input name="username" onChange={changeHandler} type="text" placeholder="Usuario"/>
-				<div className="password">
-					<input name="password" onChange={changeHandler} type="text" value={userNewInfo.password} placeholder="Contraseña"/>
-					<button className="cta" onClick={generatePassword}>Generar contraseña</button>
+			{!userData?<>
+				<h1>Crear nuevo usuario</h1>
+
+				<div className="form">
+					<input name="email" onChange={changeHandler} type="email" placeholder="Correo electronico"/>
+					<input name="username" onChange={changeHandler} type="text" placeholder="Usuario"/>
+					<div className="password">
+						<input name="password" onChange={changeHandler} type="text" value={userNewInfo.password} placeholder="Contraseña"/>
+						<button className="cta" onClick={generatePassword}>Generar contraseña</button>
+					</div>
+					<button onClick={createNewUser}>Crear usuario</button>
+					{error?<p>{error}</p>:null}
 				</div>
-				<button onClick={createNewUser}>Crear usuario</button>
-				{error?<p>{error}</p>:null}
-			</div>}
 
-
-
-
+			</>:<>
+				<h1>Datos del nuevo usuario</h1>
+				<div className="user-info">
+					<div>
+						<label>Usuario:</label>
+						<p>{userData.username}</p>
+					</div>
+					<div>
+						<label>Contraseña:</label>
+						<p>{userData.password}</p>
+					</div>
+					<div className="copyIconWrapper" onClick={copyInformation}>
+						Copiar informacion <Copy/>
+					</div>
+				</div>
+			</>}
 		</div>
 	);
 }

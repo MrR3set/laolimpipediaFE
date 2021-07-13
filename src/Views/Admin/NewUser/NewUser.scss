@@ -1,7 +1,7 @@
-.login-wrapper{
+.new-user-wrapper{
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
+	margin-top: 6rem;
 	align-items: center;
 	min-height: 75vh;
 	h1{
@@ -37,4 +37,26 @@
 			}
 		}
 	}
+	.user-info{
+		width: 100%;
+		div{
+			margin-bottom: 6rem;
+			label{
+				font-size: 3.2rem;
+				font-family: Roboto;
+				font-weight: 400;
+			}
+			p{
+				font-size: 2.4rem;
+				word-break: break-all;
+				font-family: Montserrat;
+			}
+		}
+		.copyIconWrapper{
+			cursor: pointer;
+			user-select: none;
+			font-family: Roboto;
+		}
+	}
+
 }
