@@ -70,7 +70,7 @@ function EventsPage({allowEdits=false}) {
 				<table>
 					<thead>
 						<tr>
-							<th>Hora</th>
+							<th>{sportFilter!==""?"Fecha":"Hora"}</th>
 							<th>Deporte</th>
 							<th>Evento</th>
 							<th>Ronda</th>
@@ -79,9 +79,12 @@ function EventsPage({allowEdits=false}) {
 						</tr>
 					</thead>
 					<tbody>
+						{/* Use memo would be good here */}
 						{events.filter(e=>	String(e.date).slice(0,10) === dateFilter || dateFilter==="" ).filter(e=>	String(e.sport) === sportFilter || sportFilter==="" ).map((event,index)=>{
 							return <EventPreview id={event.id} name={event.name} sport={event.sport} setFilter={setSportFilter} filter={sportFilter}
-								status={event.status} date={String(event.date).slice(11,16).replace("T", " ")} results={event.hasResults} key={index} allowEdits={allowEdits} round={event.round}/>
+								status={event.status} time={String(event.date).slice(11,16).replace("T", " ")} 
+								results={event.hasResults} date={String(event.date).slice(5,10)} 
+								key={index} allowEdits={allowEdits} round={event.round} isFiltered={sportFilter!==""}/>
 						})}
 					</tbody>
 				</table>

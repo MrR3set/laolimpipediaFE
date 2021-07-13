@@ -1,8 +1,10 @@
 
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
 
-function EventPreview({id, date, sport, name, status, results, setFilter, filter, allowEdits, round}) {
+function EventPreview({id, time, date, sport, name, status, results, setFilter, filter, allowEdits, round, isFiltered=false}) {
+
+	console.log(isFiltered)
 
 	const filterSport = () => {
 		if(filter===sport){
@@ -11,11 +13,28 @@ function EventPreview({id, date, sport, name, status, results, setFilter, filter
 			setFilter(sport);
 		}
 	}
+	
+
+	const [showDate,setShowDate] = useState(false)
+
+	useEffect(()=>{
+		if(isFiltered){
+			setShowDate(true)
+		}else{
+			setShowDate(false)
+		}
+	},[isFiltered])
+
 
 	return (
 		<tr className="eventPreview-wrapper">
 			<td>
-				{date}
+				{time}
+				{showDate?<>
+					<br/>{date.slice((0,2) === "07")?"Julio":"Agosto"}
+					<br/>{date.slice((2,3))}
+				</>:null}
+				
 			</td>
 			<td onClick={filterSport}>
 				{sport}

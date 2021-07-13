@@ -84,6 +84,10 @@
 						&:last-child{
 							width: 15%;
 						}
+						&:nth-child(1){
+							width: 5%;	
+							text-align: center;
+						}
 					}
 				}
 			}
@@ -108,7 +112,8 @@
 					td{
 						padding: 0.75rem 1rem;
 						&:nth-child(1){
-							width: 10%;	
+							width: 5%;	
+							text-align: center;
 						}
 						a.eventlink{
 							font-size: 1.4rem;
