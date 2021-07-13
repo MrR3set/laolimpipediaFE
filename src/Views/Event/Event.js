@@ -138,6 +138,7 @@ function EventPage({allowEdits=false}) {
 				{editing?<>
 					<div className="left">
 						<input	className="title" name="name" placeholder="titulo" value={event.name} onChange={onChangeHandler}/>
+						<input	className="title" name="round" placeholder="Ronda" value={event.round} onChange={onChangeHandler}/>
 					
 						<input className="date" name="date" placeholder="fecha" type="datetime-local" value={String(event.date).slice(0,16)} onChange={onChangeHandler}/>
 						
