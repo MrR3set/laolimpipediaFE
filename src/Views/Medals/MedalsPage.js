@@ -1,7 +1,7 @@
 
 import './MedalsPage.scss';
 import { axiosWithAuth } from '../../Utils/axiosWithAuth';
-import {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import ReactCountryFlag from 'react-country-flag';
 
 function MedalsPage({allowEdits=false}) {
@@ -18,7 +18,6 @@ function MedalsPage({allowEdits=false}) {
 	},[])
 
 	const uploadChanges = (id, data) => {
-		console.log(id,data)
 		axiosWithAuth().put("admin/medals/" + id, data).then(res=>{
 			console.log(res)
 		}).catch(err=>{
@@ -26,15 +25,18 @@ function MedalsPage({allowEdits=false}) {
 		})
 	}
 
-	medalData.sort((a,b)=>{
-		if(Number(a[filterConfig.key]) < Number(b[filterConfig.key])){
-			return filterConfig.ascending?1:-1;
-		}
-		if(Number(a[filterConfig.key]) > Number(b[filterConfig.key])){
-			return filterConfig.ascending?-1:1;
-		}
-		return 0
-	})
+	React.useMemo(()=>{
+		medalData.sort((a,b)=>{
+			if(Number(a[filterConfig.key]) < Number(b[filterConfig.key])){
+				return filterConfig.ascending?1:-1;
+			}
+			if(Number(a[filterConfig.key]) > Number(b[filterConfig.key])){
+				return filterConfig.ascending?-1:1;
+			}
+			return 0
+		})
+	},[filterConfig, medalData])
+
 
 	const handleFilter = (key) => {
 		if(key === filterConfig.key){
