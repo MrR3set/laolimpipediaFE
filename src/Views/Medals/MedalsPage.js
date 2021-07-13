@@ -6,10 +6,7 @@ import ReactCountryFlag from 'react-country-flag';
 
 function MedalsPage({allowEdits=false}) {
 
-	const [medalData,setMedalData] = useState([])
-	// const [filter, setFilter] = useState("gold");
-	// const [ascendingFilter, setAscendingFilter] = useState(true);
-
+	const [medalData,setMedalData] = useState([]);
 	const [filterConfig,setFilterConfig] = useState({key:"gold", ascending:true})
 
 
@@ -152,7 +149,6 @@ const TableRow = ({countryCode,country, allowEdits, gold, silver, bronce, id, up
 					<button className="cta" onClick={cancelChanges}>C</button>
 				</>:<>
 					<button className="cta" onClick={()=>{setEditing(true)}}>E</button>
-					{/* <button className="cta" onClick={()=>{uploadChanges(id,newInfo)}}>U</button> */}
 				</>
 			:null}
 		</tr> 	
