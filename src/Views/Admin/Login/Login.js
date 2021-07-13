@@ -34,6 +34,7 @@ function LoginPage({setAuthorized}) {
 		if(localStorage.getItem("token")){
 			history.push("/");
 		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	},[])
 
 	return (

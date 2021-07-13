@@ -1,7 +1,7 @@
 
 import './MedalsPage.scss';
 import { axiosWithAuth } from '../../Utils/axiosWithAuth';
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import ReactCountryFlag from 'react-country-flag';
 
 function MedalsPage({allowEdits=false}) {

@@ -24,7 +24,7 @@ function App() {
 		axiosWithAuth().get("/auth/whoami").then(res=>{
 			setAuthorized(true);
 		}).catch(err=>{
-			if(err.response.status===401){
+			if(err.response && err.response.status===401){
 				window.localStorage.removeItem("token")
 			}
 		}).finally(()=>{

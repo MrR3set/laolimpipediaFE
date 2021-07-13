@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
 import {axiosWithAuth} from '../../../Utils/axiosWithAuth';
 import './NewUser.scss';
 import Copy from "../../../Assets/Copy";
