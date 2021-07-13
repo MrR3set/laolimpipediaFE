@@ -68,12 +68,12 @@ const TableRow = ({name,country, allowEdits, score, index, updateEntry, isNew=fa
 		if(isNew)
 			setEditing(true)
 		else
-			setNewInfo({name,country,score:score?score:0})
+			setNewInfo({name,country,score:score?score:0, position})
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	},[]);
 
 	useEffect(()=>{
-		setNewInfo({name,country,score:score?score:0});
+		setNewInfo({name,country,score:score?score:0,position});
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	},[editing]);
 
@@ -88,10 +88,10 @@ const TableRow = ({name,country, allowEdits, score, index, updateEntry, isNew=fa
 		if(isNew){
 			updateEntry(newInfo);
 		}else{
-			updateEntry({name:newInfo.name, country:newInfo.country, score:newInfo.score>0?newInfo.score:null}, index);
+			updateEntry({name:newInfo.name, country:newInfo.country, score:newInfo.score>0?newInfo.score:null, position:newInfo.position}, index);
 			setEditing(false);
 		}
-		setNewInfo({name:'', country:'', score:''})
+		setNewInfo({name:'', country:'', score:'', position:''})
 	}
 
 	const cancelChanges = (e) => {
@@ -123,7 +123,7 @@ const TableRow = ({name,country, allowEdits, score, index, updateEntry, isNew=fa
 			</td>
 			<td>
 				{editing && !isNew?
-					<input name="position" value={newInfo.score} placeholder="Posicion"  onChange={onChangeHandler}/>
+					<input name="position" value={newInfo.position} placeholder="Posicion"  onChange={onChangeHandler}/>
 					:
 					position
 				}
