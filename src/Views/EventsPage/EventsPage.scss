@@ -6,7 +6,7 @@
 
 	.header{
 		width: 100%;
-		margin: 3rem auto 6rem;
+		margin: 3rem auto 1rem;
 		text-align: center;
 		position: relative;
 		padding: 2.5rem 2rem;
@@ -38,6 +38,12 @@
 				font-size: 7.5rem;
 			}
 		}
+	}
+	
+	.info{
+		font-family: Roboto;
+		font-size: 2.6rem;
+		margin-bottom:6rem;
 	}
 
 	.controls{
