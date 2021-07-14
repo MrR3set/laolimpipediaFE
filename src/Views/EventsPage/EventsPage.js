@@ -59,6 +59,8 @@ function EventsPage({allowEdits=false}) {
 				<h1>Horarios</h1>
 			</div>
 
+			<p className="info">Este portal, para facilitar la accesibilidad a la representación nacional y siguiendo la línea de nuestro trabajo durante todo el ciclo, únicamente recoge los horarios y resultados en directo de los españoles. Para acceder al calendario completo, visita la web oficial de <a target="_blank" href="https://olympics.com/">Tokio 2020</a></p>
+
 			{allowEdits?
 				<div className="controls">
 					<Link to="/admin/eventos/new" className="cta">Añadir evento</Link>
