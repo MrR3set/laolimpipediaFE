@@ -7,7 +7,7 @@ import ReactCountryFlag from 'react-country-flag';
 function MedalsPage({allowEdits=false}) {
 
 	const [medalData,setMedalData] = useState([]);
-	const [filterConfig,setFilterConfig] = useState({key:"gold", ascending:true})
+	const [filterConfig,setFilterConfig] = useState({key:"position", ascending:true})
 
 
 	useEffect(()=>{
@@ -59,7 +59,7 @@ function MedalsPage({allowEdits=false}) {
 				<table>
 					<thead>
 						<tr>
-							<th onClick={()=>{handleFilter("gold")}}>Pos</th>
+							<th onClick={()=>{handleFilter("position")}}>Pos</th>
 							<th onClick={()=>{handleFilter("country")}}>Pais</th>
 							<th className="medalType" onClick={()=>{handleFilter("gold")}}>Oro</th>
 							<th className="medalType" onClick={()=>{handleFilter("silver")}}>Plata</th>
@@ -68,8 +68,8 @@ function MedalsPage({allowEdits=false}) {
 						</tr>
 					</thead>
 					<tbody>
-						{medalData.map(({countryCode, country, gold, silver, bronce, id},i)=>{
-							return <TableRow countryCode={countryCode} country={country} gold={gold} silver={silver} bronce={bronce} key={i} id={id} allowEdits={allowEdits} uploadChanges={uploadChanges} position={i+1}/>
+						{medalData.map(({countryCode, country, gold, silver, bronce, position, id},i)=>{
+							return <TableRow countryCode={countryCode} country={country} gold={gold} silver={silver} bronce={bronce} key={i} id={id} allowEdits={allowEdits} uploadChanges={uploadChanges} position={position}/>
 						})}
 					</tbody>
 
