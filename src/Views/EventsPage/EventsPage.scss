@@ -41,9 +41,14 @@
 	}
 	
 	.info{
-		font-family: Roboto;
-		font-size: 2.6rem;
 		margin-bottom:6rem;
+		p{
+			font-family: Roboto;
+			font-size: 2rem;
+			&.notes{
+				font-size: 1.6rem;
+			}
+		}
 	}
 
 	.controls{

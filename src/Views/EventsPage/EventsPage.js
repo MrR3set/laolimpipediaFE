@@ -64,9 +64,9 @@ function EventsPage({allowEdits=false}) {
 
 				<p>Este portal, para facilitar la accesibilidad a la representación nacional y siguiendo la línea de nuestro trabajo durante todo el ciclo, únicamente recoge los horarios y resultados en directo de los españoles. Para acceder al calendario completo, visita la web oficial de <a target="_blank" href="https://olympics.com/">Tokio 2020</a></p>
 
-				<p>Los eventos con asterisco* dependen de si se consigue la clasificación a esa ronda o no; podrán ser borrados de este calendario si se produce la eliminación del deportista en fases o rondas previas</p>
+				<p className="notes">Los eventos con asterisco* dependen de si se consigue la clasificación a esa ronda o no; podrán ser borrados de este calendario si se produce la eliminación del deportista en fases o rondas previas</p>
 
-				<p>Pincha sobre el nombre de cada modalidad en la columna “deporte” para filtrar los horarios y el calendario únicamente de ese deporte</p>
+				<p className="notes">Pincha sobre el nombre de cada modalidad en la columna “deporte” para filtrar los horarios y el calendario únicamente de ese deporte</p>
 
 			</div>
 
