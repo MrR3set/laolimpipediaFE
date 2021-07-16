@@ -23,13 +23,12 @@ function EventPreview({id, time, date, sport, name, status, setFilter, filter, a
 		}
 	},[isFiltered])
 
-
 	return (
 		<tr className="eventPreview-wrapper">
 			<td>
 				{time}
 				{showDate?<>
-					<br/>{date.slice((0,2) === "07")?"Julio":"Agosto"}
+					<br/>{date.split("-")[0] === "07"?"Julio":"Agosto"}
 					<br/>{date.slice((2,3))}
 				</>:null}
 				
