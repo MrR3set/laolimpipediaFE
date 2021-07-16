@@ -36,7 +36,7 @@ function Table({results, saveResults, discardResults, allowEdits=false}) {
 					</tr>
 				</thead>
 				<tbody>
-					{data.sort((a,b) => Number(a.score) < Number(b.score) ? 1 : -1).map(({name,country, score, position},i)=>{
+					{data.sort((a,b) => Number(a.position) < Number(b.position) ? 1 : -1).map(({name,country, score, position},i)=>{
 						return <TableRow name={name} country={country} score={score} key={i} index={i} position={position} updateEntry={updateEntry} deleteEntry={deleteEntry} allowEdits={allowEdits}/>
 					})}
 				</tbody>
@@ -88,7 +88,7 @@ const TableRow = ({name,country, allowEdits, score, index, updateEntry, isNew=fa
 		if(isNew){
 			updateEntry(newInfo);
 		}else{
-			updateEntry({name:newInfo.name, country:newInfo.country, score:newInfo.score>0?newInfo.score:null, position:newInfo.position}, index);
+			updateEntry({name:newInfo.name, country:newInfo.country, score:newInfo.score, position:newInfo.position}, index);
 			setEditing(false);
 		}
 		setNewInfo({name:'', country:'', score:'', position:''})
@@ -116,7 +116,7 @@ const TableRow = ({name,country, allowEdits, score, index, updateEntry, isNew=fa
 			</td> 	
 			<td>
 				{editing && !isNew?
-					<input name="score" value={newInfo.score} placeholder="Marcador"  onChange={onChangeHandler}/>
+					<input name="score" type="text" value={newInfo.score} placeholder="Marcador"  onChange={onChangeHandler}/>
 					:
 					score
 				}
