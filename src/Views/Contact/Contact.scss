@@ -54,4 +54,13 @@
 			}
 		}
 	}
+
+	.link{
+		display: flex;
+		justify-content: space-around;
+		flex-wrap: wrap;
+		svg{
+			height: 10rem;
+		}
+	}
 }

@@ -1,6 +1,8 @@
 
 import React from 'react';
 import './Contact.scss';
+import { ReactComponent as InstagramIcon } from '../../Assets/instagram.svg'
+import { ReactComponent as MailOutlineIcon } from '../../Assets/gmail.svg'
 
 function Contact() {
 
@@ -27,8 +29,8 @@ function Contact() {
 			</div>
 
 			<div className="link">
-				<p>Email</p>
-				<p>Instagram</p>
+				<a href="mailto:olimpipedia@gmail.com" ><MailOutlineIcon aria="Email"/></a>
+        		<a href="https://instagram.com/laolimpipedia" ><InstagramIcon aria="Email"/></a>
 			</div>
 
 		</div>
