@@ -1,8 +1,4 @@
 import React from 'react';
-// import InstagramIcon from '@material-ui/icons/Instagram';
-// import MailOutlineIcon from '@material-ui/icons/MailOutline';
-// import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
-
 import { ReactComponent as InstagramIcon } from '../../Assets/instagram.svg'
 import { ReactComponent as MailOutlineIcon } from '../../Assets/gmail.svg'
 import { ReactComponent as ArrowUpwardIcon } from '../../Assets/down.svg'
