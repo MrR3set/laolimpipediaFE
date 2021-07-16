@@ -15,6 +15,7 @@ import Contact from "./Views/Contact/Contact";
 import LoginPage from "./Views/Admin/Login/Login";
 import NewUser from "./Views/Admin/NewUser/NewUser";
 import TeamEsp from "./Views/TeamEsp/TeamEsp";
+import Footer from "./Components/Footer/Footer";
 
 function App() {
 
@@ -62,6 +63,8 @@ function App() {
 
 			</Switch>
 			
+
+			<Footer></Footer>
 		</div>:<div className="loader" >
 			<Spinner/>
 		</div>
