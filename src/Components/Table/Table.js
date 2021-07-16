@@ -31,7 +31,7 @@ function Table({results, saveResults, discardResults, allowEdits=false}) {
 					<tr>
 						<th>nombre</th>
 						<th>resultado</th>
-						<th>posicion</th>
+						<th>posición</th>
 						{allowEdits?<th></th>:null}
 					</tr>
 				</thead>
