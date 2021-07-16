@@ -166,7 +166,9 @@ function EventPage({allowEdits=false}) {
 				</>:<>
 					<div className="left">
 						<h1 className="title">{event.name}</h1>
+						<h1 className="title">{event.round}</h1>
 						<p className="date">{String(event.date).slice(0,16).replace("T", " - ")}</p>
+						<p className="status">{event.status}</p>
 						<p className="sport">{event.sport}</p>
 					</div>
 
@@ -195,15 +197,14 @@ function EventPage({allowEdits=false}) {
 				</div>:null}
 			</div>
 
+			{/* keep just in case
+			
 			<div className="links">
 				<h1 className="title">Eventos relacionados</h1>
-
-
-
 					
 				{links.map((link,i)=>{
 					return <div className="link-wrapper">
-						<Link to={link.path} key={i} className="link">{link.name}</Link>
+						<a to={link.path} target="_blank" key={i} className="link">{link.name}</a>
 						{allowEdits?<button className="cta" onClick={(event)=>{deleteLink(event,i)}}>Borrar</button>:null}
 					</div>
 				})}
@@ -215,17 +216,14 @@ function EventPage({allowEdits=false}) {
 						<button className="cta" onClick={saveLink}>guardar</button>
 					</div>
 				:null}
-
-
 				{allowEdits?<div className="controls">
 						<button className="cta" onClick={(e)=>{e.preventDefault(); setAddLink(true)}}>+</button>
 						<button className="cta" onClick={uploadLinks}>Subir links</button>
 					</div>
 				:null}
+			</div> */}
 
 
-
-			</div>
 		</div>
 	);
 }
