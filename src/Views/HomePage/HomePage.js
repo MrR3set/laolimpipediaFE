@@ -16,7 +16,7 @@ const HomePageData = [
 	},
 	{
 		name:"Guia oficial la Olimpipedia JJ.OO. Tokio 2020", 
-		path:"/admin/guia",
+		path:"/guia",
 		imageUrl:"https://images.pexels.com/photos/236937/pexels-photo-236937.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
 	},
 	{
@@ -26,7 +26,7 @@ const HomePageData = [
 	},
 	{
 		name:"Contacto", 
-		path:"/admin/contacto",
+		path:"/contacto",
 		imageUrl:"https://images.pexels.com/photos/5077065/pexels-photo-5077065.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
 	},
 	{
