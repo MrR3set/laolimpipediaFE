@@ -34,6 +34,7 @@ function Nav({allowEdits=false}) {
 					<NavLink to={`${allowEdits?"/admin":""}/directo`} onClick={toggleMenu}>En Directo</NavLink>
 					<NavLink to="/guia" onClick={toggleMenu}>Guía</NavLink>
 					<NavLink to="/contacto" onClick={toggleMenu}>Contacto</NavLink>
+					<NavLink to="/teamesp" onClick={toggleMenu}>Team Esp</NavLink>
 				</div>
 			</div>
 

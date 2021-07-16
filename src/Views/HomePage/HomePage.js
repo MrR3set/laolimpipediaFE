@@ -29,6 +29,11 @@ const HomePageData = [
 		path:"/admin/contacto",
 		imageUrl:"https://images.pexels.com/photos/5077065/pexels-photo-5077065.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
 	},
+	{
+		name:"Team Esp", 
+		path:"/teamesp",
+		imageUrl:"https://images.pexels.com/photos/54097/spain-flag-flutter-spanish-54097.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+	},
 ]
 
 
