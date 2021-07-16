@@ -3,11 +3,12 @@ import './MedalsPage.scss';
 import { axiosWithAuth } from '../../Utils/axiosWithAuth';
 import React, {useEffect, useState} from 'react';
 import ReactCountryFlag from 'react-country-flag';
+import { ReactComponent as DownArrow } from '../../Assets/down.svg'
 
 function MedalsPage({allowEdits=false}) {
 
 	const [medalData,setMedalData] = useState([]);
-	const [filterConfig,setFilterConfig] = useState({key:"position", ascending:true})
+	const [filterConfig,setFilterConfig] = useState({key:"position", ascending:false})
 
 
 	useEffect(()=>{
@@ -55,21 +56,46 @@ function MedalsPage({allowEdits=false}) {
 			</div>
 			
 
+
+			
+
+	
+
 			<div className="table-wrapper">
 				<table>
 					<thead>
 						<tr>
-							<th onClick={()=>{handleFilter("position")}}>Pos</th>
-							<th onClick={()=>{handleFilter("country")}}>Pais</th>
-							<th className="medalType" onClick={()=>{handleFilter("gold")}}>Oro</th>
-							<th className="medalType" onClick={()=>{handleFilter("silver")}}>Plata</th>
-							<th className="medalType" onClick={()=>{handleFilter("bronce")}}>Bronce</th>
+							<th onClick={()=>{handleFilter("position")}} >
+								Pos 
+								{filterConfig.key==="position"?<DownArrow className={filterConfig.ascending?"descending":""}/>:null}
+							</th>
+							<th onClick={()=>{handleFilter("country")}}>
+								Pais 
+								{filterConfig.key==="country"?<DownArrow className={filterConfig.ascending?"descending":""}/>:null}
+							</th>
+							<th className="medalType" onClick={()=>{handleFilter("gold")}}>
+								Oro
+								{filterConfig.key==="gold"?<DownArrow className={filterConfig.ascending?"descending":""}/>:null}
+							</th>
+							<th className="medalType" onClick={()=>{handleFilter("silver")}}>
+								Plata
+								{filterConfig.key==="silver"?<DownArrow className={filterConfig.ascending?"descending":""}/>:null}
+							</th>
+							<th className="medalType" onClick={()=>{handleFilter("bronce")}}>
+								Bronce
+								{filterConfig.key==="bronce"?<DownArrow className={filterConfig.ascending?"descending":""}/>:null}
+							</th>
+							<th className="medalType" onClick={()=>{handleFilter("total")}}>
+								Total
+								{filterConfig.key==="total"?<DownArrow className={filterConfig.ascending?"descending":""}/>:null}
+							</th>
+
 							{allowEdits?<th className="controls"></th>:null}
 						</tr>
 					</thead>
 					<tbody>
-						{medalData.map(({countryCode, country, gold, silver, bronce, position, id},i)=>{
-							return <TableRow countryCode={countryCode} country={country} gold={gold} silver={silver} bronce={bronce} key={i} id={id} allowEdits={allowEdits} uploadChanges={uploadChanges} position={position}/>
+						{medalData.map(({countryCode, country, gold, silver, bronce, position, id, total},i)=>{
+							return <TableRow countryCode={countryCode} country={country} gold={gold} silver={silver} bronce={bronce} key={i} id={id} allowEdits={allowEdits} uploadChanges={uploadChanges} position={position} total={total}/>
 						})}
 					</tbody>
 
@@ -85,7 +111,7 @@ export default MedalsPage;
 
 
 
-const TableRow = ({countryCode,country, allowEdits, gold, silver, bronce, id, uploadChanges, position}) => {
+const TableRow = ({countryCode,country, allowEdits, gold, silver, bronce, id, uploadChanges, position, total}) => {
 
 	const [editing,setEditing] = useState(false);
 	const [newInfo, setNewInfo] = useState({gold:"0", silver:"0", bronce:"0"})
@@ -142,6 +168,9 @@ const TableRow = ({countryCode,country, allowEdits, gold, silver, bronce, id, up
 				</td>
 				<td>
 					{bronce}
+				</td>
+				<td>
+					{total}
 				</td>
 			</>}
 

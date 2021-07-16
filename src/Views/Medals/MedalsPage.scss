@@ -41,6 +41,7 @@
 
 	.table-wrapper{
 		overflow-x: auto;
+		min-width: 680px;
 		table{
 			text-align: left;
 			text-transform: capitalize;
@@ -71,6 +72,21 @@
 		
 					th{
 						padding: 0.25rem 0.5rem;
+						&.ascending{
+							svg{
+								transform: rotate(180deg);
+							}
+						}
+						svg{
+							transition: all 0.5s ease-in-out;
+							fill: white;
+							height: 1.6rem;
+							margin-left: 6px;
+							transform: rotate(180deg);
+							&.descending{
+								transform: rotate(0deg);
+							}
+						}
 						&:first-child{
 							border-top-left-radius: 5px;
 							width: 10%;
@@ -79,6 +95,7 @@
 							width: 15%;
 							max-width: 15%;
 						}
+
 					}
 				}
 			}
