@@ -14,6 +14,7 @@ import './App.scss';
 import Contact from "./Views/Contact/Contact";
 import LoginPage from "./Views/Admin/Login/Login";
 import NewUser from "./Views/Admin/NewUser/NewUser";
+import TeamEsp from "./Views/TeamEsp/TeamEsp";
 
 function App() {
 
@@ -48,6 +49,7 @@ function App() {
 				<Route path="/medallero" component={MedalsPage}/>
 				<Route path="/directo" component={LivePage}/>
 				<Route path="/contacto" component={Contact}/>
+				<Route path="/teamesp" component={TeamEsp}/>
 				
 				<PrivateRoute path="/admin/eventos/:id" component={Event} authorized={authorized}/>
 				<PrivateRoute exact path="/admin/eventos" component={EventsPage} authorized={authorized}/>
