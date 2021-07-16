@@ -13,7 +13,29 @@ function TeamEsp() {
 			</div>
 			
 			<div className="content-wrapper">
-				<img src={require(`../../Assets/teamESP_Images/Diapositiva${1}.JPG`).default}></img>
+				<img src={require(`../../Assets/teamESP_Images/Diapositiva${1}.JPG`).default} alt="team esp diapositive"></img>
+				<img src={require(`../../Assets/teamESP_Images/Diapositiva${2}.JPG`).default} alt="team esp diapositive"></img>
+				<img src={require(`../../Assets/teamESP_Images/Diapositiva${3}.JPG`).default} alt="team esp diapositive"></img>
+				<img src={require(`../../Assets/teamESP_Images/Diapositiva${4}.JPG`).default} alt="team esp diapositive"></img>
+				<img src={require(`../../Assets/teamESP_Images/Diapositiva${5}.JPG`).default} alt="team esp diapositive"></img>
+				<img src={require(`../../Assets/teamESP_Images/Diapositiva${6}.JPG`).default} alt="team esp diapositive"></img>
+				<img src={require(`../../Assets/teamESP_Images/Diapositiva${7}.JPG`).default} alt="team esp diapositive"></img>
+				<img src={require(`../../Assets/teamESP_Images/Diapositiva${8}.JPG`).default} alt="team esp diapositive"></img>
+				<img src={require(`../../Assets/teamESP_Images/Diapositiva${9}.JPG`).default} alt="team esp diapositive"></img>
+				<img src={require(`../../Assets/teamESP_Images/Diapositiva${10}.JPG`).default} alt="team esp diapositive"></img>
+				<img src={require(`../../Assets/teamESP_Images/Diapositiva${11}.JPG`).default} alt="team esp diapositive"></img>
+				<img src={require(`../../Assets/teamESP_Images/Diapositiva${12}.JPG`).default} alt="team esp diapositive"></img>
+				<img src={require(`../../Assets/teamESP_Images/Diapositiva${13}.JPG`).default} alt="team esp diapositive"></img>
+				<img src={require(`../../Assets/teamESP_Images/Diapositiva${14}.JPG`).default} alt="team esp diapositive"></img>
+				<img src={require(`../../Assets/teamESP_Images/Diapositiva${15}.JPG`).default} alt="team esp diapositive"></img>
+				<img src={require(`../../Assets/teamESP_Images/Diapositiva${16}.JPG`).default} alt="team esp diapositive"></img>
+				<img src={require(`../../Assets/teamESP_Images/Diapositiva${17}.JPG`).default} alt="team esp diapositive"></img>
+				<img src={require(`../../Assets/teamESP_Images/Diapositiva${18}.JPG`).default} alt="team esp diapositive"></img>
+				<img src={require(`../../Assets/teamESP_Images/Diapositiva${19}.JPG`).default} alt="team esp diapositive"></img>
+				<img src={require(`../../Assets/teamESP_Images/Diapositiva${20}.JPG`).default} alt="team esp diapositive"></img>
+				<img src={require(`../../Assets/teamESP_Images/Diapositiva${21}.JPG`).default} alt="team esp diapositive"></img>
+
+	
 
 			</div>
 

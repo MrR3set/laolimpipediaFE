@@ -39,6 +39,16 @@
 		}
 	}
 
+	.content-wrapper{
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		img{
+			width: 45%;
+			margin-bottom: 2.5rem;
+		}
+	}
+
 	
 
 
