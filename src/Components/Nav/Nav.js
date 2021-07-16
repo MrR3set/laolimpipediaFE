@@ -32,7 +32,7 @@ function Nav({allowEdits=false}) {
 					<NavLink to={`${allowEdits?"/admin":""}/eventos`} onClick={toggleMenu}>Horarios</NavLink>
 					<NavLink to={`${allowEdits?"/admin":""}/medallero`} onClick={toggleMenu}>Medallero</NavLink>
 					<NavLink to={`${allowEdits?"/admin":""}/directo`} onClick={toggleMenu}>En Directo</NavLink>
-					<NavLink to="/guia" onClick={toggleMenu}>Guia</NavLink>
+					<NavLink to="/guia" onClick={toggleMenu}>Guía</NavLink>
 					<NavLink to="/contacto" onClick={toggleMenu}>Contacto</NavLink>
 				</div>
 			</div>
