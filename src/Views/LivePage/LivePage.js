@@ -6,6 +6,7 @@ import "./LivePage.scss";
 import Logo from "../../Assets/Logo.png"
 import tdp from "../../Assets/tdp.jpg";
 import eurosport from "../../Assets/eurosport.jpg"
+import seguimiento from "../..//Assets/comoseguir.jpg"
 
 
 const starredLinks = [
@@ -61,6 +62,10 @@ function EventPage({allowEdits=false}) {
 				<h1>¿Cómo seguir los Juegos?</h1>
 			</div>
  
+			<img src={seguimiento} alt="??"/>
+			<p>Pincha en los siguientes enlaces:</p>
+
+
 			{starredLinks.map((starredLinks,i)=>{
 				// Move this to Link Preview. it didnt want to work properly... image wise
 				return <a className="linkPreview-wrapper" href={starredLinks.url} target="_blank">
