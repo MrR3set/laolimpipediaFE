@@ -3,6 +3,7 @@ import React from 'react';
 import './Contact.scss';
 import { ReactComponent as InstagramIcon } from '../../Assets/instagram.svg'
 import { ReactComponent as MailOutlineIcon } from '../../Assets/gmail.svg'
+import { ReactComponent as TwitchIcon } from '../../Assets/twitch.svg'
 
 function Contact() {
 
@@ -31,6 +32,7 @@ function Contact() {
 			<div className="link">
 				<a href="mailto:olimpipedia@gmail.com" ><MailOutlineIcon/></a>
         		<a href="https://instagram.com/laolimpipedia" ><InstagramIcon/></a>
+        		<a href="https://www.twitch.tv/laolimpipedia" ><TwitchIcon/></a>
 			</div>
 
 		</div>

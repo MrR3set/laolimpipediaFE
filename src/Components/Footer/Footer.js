@@ -2,6 +2,7 @@ import React from 'react';
 import { ReactComponent as InstagramIcon } from '../../Assets/instagram.svg'
 import { ReactComponent as MailOutlineIcon } from '../../Assets/gmail.svg'
 import { ReactComponent as ArrowUpwardIcon } from '../../Assets/down.svg'
+import { ReactComponent as TwitchIcon } from '../../Assets/twitch.svg'
 import "./Footer.scss"
 
 
@@ -26,6 +27,7 @@ function Footer() {
       <div className="social">
         <a href="mailto:olimpipedia@gmail.com" ><MailOutlineIcon/></a>
         <a href="https://instagram.com/laolimpipedia" ><InstagramIcon/></a>
+		<a href="https://www.twitch.tv/laolimpipedia" ><TwitchIcon/></a>
       </div>
     </div>
   );
