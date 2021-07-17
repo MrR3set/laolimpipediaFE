@@ -67,6 +67,8 @@ function EventsPage({allowEdits=false}) {
 				<p className="notes">Los eventos con asterisco* dependen de si se consigue la clasificación a esa ronda o no; podrán ser borrados de este calendario si se produce la eliminación del deportista en fases o rondas previas</p>
 
 				<p className="notes">Pincha sobre el nombre de cada modalidad en la columna “deporte” para filtrar los horarios y el calendario únicamente de ese deporte</p>
+				
+				<p className="notes">En una gran parte de las pruebas faltan por confirmarse los cuadros y/o turnos de participación, por lo que sus respectivos horarios aparecen de forma aproximada o en la franja horaria que la organización les ha asignado. Conforme vayan confirmándose los horarios exactos de todas las rondas y pruebas que quedan por hacerlo, estos calendarios diarios irán actualizándose al minuto</p>
 
 			</div>
 
