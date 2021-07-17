@@ -4,6 +4,13 @@ import { axiosWithAuth } from '../../Utils/axiosWithAuth';
 import { ReactComponent as AddIcon } from '../../Assets/PlusIconRounded.svg';
 import "./LivePage.scss";
 
+const starredLinks = [
+	{title:"Instagram", url:"https://www.instagram.com/laolimpipedia"},
+	{title:"Twitch", url:"https://www.twitch.tv/laolimpipedia"},
+	{title:"Teledeporte", url:"https://www.rtve.es/play/videos/directo/tdp/"},
+	{title:"Eurosport", url:"https://www.eurosportplayer.com/"},
+]
+
 function EventPage({allowEdits=false}) {
 
 	const [links,setLinks] = useState([]);
@@ -50,6 +57,9 @@ function EventPage({allowEdits=false}) {
 				<h1>¿Cómo seguir los Juegos?</h1>
 			</div>
  
+			{starredLinks.map((starredLinks,i)=>{
+				return <LinkPreview data={starredLinks} key={i}/>
+			})}
 			{links.map((linkData,i)=>{
 				return <LinkPreview data={linkData} deleteLink={deleteLink} allowEdits={allowEdits} key={i}/>
 			})} 
