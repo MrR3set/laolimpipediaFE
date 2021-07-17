@@ -19,7 +19,7 @@ function Footer() {
         <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
           <img alt="Creative Commons License" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" />
         </a> 
-        <p>Licensed by <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a><br/>Created and designed by <a href="https://hardcore-darwin-24581d.netlify.app/" target="__blank">Bairon Paz </a></p>
+        <p>Licensed by <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a></p>
 
        
       </div>
