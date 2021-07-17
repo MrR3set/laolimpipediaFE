@@ -4,13 +4,15 @@ import { axiosWithAuth } from '../../Utils/axiosWithAuth';
 import { ReactComponent as AddIcon } from '../../Assets/PlusIconRounded.svg';
 import "./LivePage.scss";
 import Logo from "../../Assets/Logo.png"
+import tdp from "../../Assets/tdp.jpg";
+import eurosport from "../../Assets/eurosport.jpg"
 
 
 const starredLinks = [
 	{title:"Instagram", url:"https://www.instagram.com/laolimpipedia", image:Logo},
 	{title:"Twitch", url:"https://www.twitch.tv/laolimpipedia", image:Logo},
-	{title:"Teledeporte", url:"https://www.rtve.es/play/videos/directo/tdp/", image:"../../Assets/tdp.jpg"},
-	{title:"Eurosport", url:"https://www.eurosportplayer.com/", image:"../../Assets/eurosport.jpg"},
+	{title:"Teledeporte", url:"https://www.rtve.es/play/videos/directo/tdp/", image:tdp},
+	{title:"Eurosport", url:"https://www.eurosportplayer.com/", image:eurosport},
 ]
 
 function EventPage({allowEdits=false}) {
