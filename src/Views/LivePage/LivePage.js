@@ -10,8 +10,8 @@ import seguimiento from "../..//Assets/comoseguir.jpg"
 
 
 const starredLinks = [
-	{title:"Instagram", url:"https://www.instagram.com/laolimpipedia", image:Logo},
-	{title:"Twitch", url:"https://www.twitch.tv/laolimpipedia", image:Logo},
+	{title:"Instagram LA OLIMPIPEDIA", url:"https://www.instagram.com/laolimpipedia", image:Logo},
+	{title:"Twitch LA OLIMPIPEDIA", url:"https://www.twitch.tv/laolimpipedia", image:Logo},
 	{title:"Teledeporte", url:"https://www.rtve.es/play/videos/directo/tdp/", image:tdp},
 	{title:"Eurosport", url:"https://www.eurosportplayer.com/", image:eurosport},
 ]
