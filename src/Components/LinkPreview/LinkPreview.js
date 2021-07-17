@@ -1,6 +1,5 @@
 import {useEffect, useState } from 'react';
 import { axiosWithAuth } from "../../Utils/axiosWithAuth";
-import { Link } from "react-router-dom";
 import "./LinkPreview.scss";
 import Logo from "../../Assets/Logo.png"
 
@@ -32,7 +31,7 @@ function LinkPreview({data, allowEdits=false,deleteLink}) {
 
 
 	return (
-		<a className="linkPreview-wrapper" href={previewData.url} target="_blank">
+		<div className="linkPreview-wrapper">
 			<div className="image-wrapper">
 				<img className="background" src={previewData.image?previewData.image:Logo} alt="preview background"></img>
 				<img className="foreground" src={previewData.image?previewData.image:Logo} alt="preview foreground"></img>
@@ -50,7 +49,7 @@ function LinkPreview({data, allowEdits=false,deleteLink}) {
 				</div>
 			</div>
 			{allowEdits?<button className="cta delete" onClick={()=>{deleteLink(data.id)}}>Borrar</button>:null}
-		</a>
+		</div>
 	);
 }
 

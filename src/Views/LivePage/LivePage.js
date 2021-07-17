@@ -3,12 +3,14 @@ import LinkPreview from '../../Components/LinkPreview/LinkPreview';
 import { axiosWithAuth } from '../../Utils/axiosWithAuth';
 import { ReactComponent as AddIcon } from '../../Assets/PlusIconRounded.svg';
 import "./LivePage.scss";
+import Logo from "../../Assets/Logo.png"
+
 
 const starredLinks = [
-	{title:"Instagram", url:"https://www.instagram.com/laolimpipedia"},
-	{title:"Twitch", url:"https://www.twitch.tv/laolimpipedia"},
-	{title:"Teledeporte", url:"https://www.rtve.es/play/videos/directo/tdp/"},
-	{title:"Eurosport", url:"https://www.eurosportplayer.com/"},
+	{title:"Instagram", url:"https://www.instagram.com/laolimpipedia", image:Logo},
+	{title:"Twitch", url:"https://www.twitch.tv/laolimpipedia", image:Logo},
+	{title:"Teledeporte", url:"https://www.rtve.es/play/videos/directo/tdp/", image:"../../Assets/tdp.jpg"},
+	{title:"Eurosport", url:"https://www.eurosportplayer.com/", image:"../../Assets/eurosport.jpg"},
 ]
 
 function EventPage({allowEdits=false}) {
@@ -58,8 +60,28 @@ function EventPage({allowEdits=false}) {
 			</div>
  
 			{starredLinks.map((starredLinks,i)=>{
-				return <LinkPreview data={starredLinks} key={i}/>
+				// Move this to Link Preview. it didnt want to work properly... image wise
+				return <a className="linkPreview-wrapper" href={starredLinks.url} target="_blank">
+						<div className="image-wrapper">
+								<img className="background" src={starredLinks.image} alt="preview background"></img>
+								<img className="foreground" src={starredLinks.image} alt="preview foreground"></img>
+					</div>
+
+					<div className="content-wrapper">
+					
+							<h1 className="title">{starredLinks.title}</h1>
+					
+							<div className="description">
+								<p>{starredLinks.description}</p>
+							</div>
+							<div className="info">
+								<p className="domain">{starredLinks.domain}</p>
+								{starredLinks.date?<p className="date">{String(starredLinks.activeDate).slice(0,16).replace("T", " ")}</p>:null}
+							</div>
+						</div>
+					</a>
 			})}
+
 			{links.map((linkData,i)=>{
 				return <LinkPreview data={linkData} deleteLink={deleteLink} allowEdits={allowEdits} key={i}/>
 			})} 
