@@ -1,0 +1,46 @@
+@import "../../Utils//Variables.scss";
+.guide-page-wrapper{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	.header{
+		width: 100%;
+		margin: 1rem auto 3rem;
+		text-align: center;
+		position: relative;
+		padding: 2.5rem 2rem;
+		font-family: Montserrat;
+		@media(min-width:$breakpoint-tablet){
+			padding: 8.5rem 2rem;
+		}
+		@media(min-width:$breakpoint-laptop){
+			padding: 8.5rem 2rem;
+		}
+	}
+
+	img{
+		width: 45%;
+		height: 45%;
+		margin-bottom: 2.5rem;
+		margin-top: 3rem;
+	}
+
+	p{
+		font-family: Roboto;
+		text-align: center;
+	}
+
+	a{
+		margin: 1rem auto;
+	}
+
+	.content-wrapper{
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		max-width: 90%;
+
+	}
+
+}

@@ -16,6 +16,7 @@ import LoginPage from "./Views/Admin/Login/Login";
 import NewUser from "./Views/Admin/NewUser/NewUser";
 import TeamEsp from "./Views/TeamEsp/TeamEsp";
 import Footer from "./Components/Footer/Footer";
+import Guide from "./Views/Guide/Guide";
 
 function App() {
 
@@ -49,6 +50,7 @@ function App() {
 				<Route path="/eventos" component={EventsPage}/>
 				<Route path="/medallero" component={MedalsPage}/>
 				<Route path="/directo" component={LivePage}/>
+				<Route path="/guia" component={Guide}/>
 				<Route path="/contacto" component={Contact}/>
 				<Route path="/teamesp" component={TeamEsp}/>
 				
