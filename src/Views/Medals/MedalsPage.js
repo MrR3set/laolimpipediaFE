@@ -28,11 +28,20 @@ function MedalsPage({allowEdits=false}) {
 
 	React.useMemo(()=>{
 		medalData.sort((a,b)=>{
-			if(Number(a[filterConfig.key]) < Number(b[filterConfig.key])){
-				return filterConfig.ascending?1:-1;
-			}
-			if(Number(a[filterConfig.key]) > Number(b[filterConfig.key])){
-				return filterConfig.ascending?-1:1;
+			if(filterConfig.key === "country"){
+				if(a[filterConfig.key] < b[filterConfig.key]){
+					return filterConfig.ascending?1:-1;
+				}
+				if(a[filterConfig.key] > b[filterConfig.key]){
+					return filterConfig.ascending?-1:1;
+				}
+			}else{
+				if(Number(a[filterConfig.key]) < Number(b[filterConfig.key])){
+					return filterConfig.ascending?1:-1;
+				}
+				if(Number(a[filterConfig.key]) > Number(b[filterConfig.key])){
+					return filterConfig.ascending?-1:1;
+				}
 			}
 			return 0
 		})
