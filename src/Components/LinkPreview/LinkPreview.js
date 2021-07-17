@@ -20,16 +20,10 @@ function LinkPreview({data, allowEdits=false,deleteLink}) {
 				}
 			})
 		}).finally(()=>{
-
-			console.log(String(data.url))
-
-
 			if(!data["domain"])
 				slowDat["domain"] = String(data.url).split("/")[2].replace("www."," ");
 			else
 				data["domain"] = String(data.url).split("/")[2].replace("www."," ");
-
-
 			setPreviewData({...data, ...slowDat})
 		})
 		// eslint-disable-next-line react-hooks/exhaustive-deps

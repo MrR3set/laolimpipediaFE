@@ -24,8 +24,8 @@ function Footer() {
       </div>
 
       <div className="social">
-        <a href="mailto:olimpipedia@gmail.com" ><MailOutlineIcon aria="Email"/></a>
-        <a href="https://instagram.com/laolimpipedia" ><InstagramIcon aria="Email"/></a>
+        <a href="mailto:olimpipedia@gmail.com" ><MailOutlineIcon/></a>
+        <a href="https://instagram.com/laolimpipedia" ><InstagramIcon/></a>
       </div>
     </div>
   );
