@@ -142,29 +142,30 @@
 		}
 	}
 
-	.links{
+	.notes{
 		display: flex;
 		flex-direction: column;
-		margin-top: 6rem;
+		margin-bottom: 6rem;
 		.title{
 			font-size: 3.8rem;
 			font-family: Roboto;
 			margin-bottom: 2.5rem;
 			width: 100%;
 		}
-		.link-wrapper{
+		.note-wrapper{
 			margin-bottom: 1.5rem;
 			display: flex;
 			justify-content: space-between;
 			align-items: center;
-			&:nth-child(even){
-				background-color: rgb(241, 241, 241);
-			}
-			.link{
+			.note{
 				width: 70%;
 				color: black;
 				font-family: Montserrat;
+				font-size: 1.6rem;
 				cursor: pointer;
+				@media (min-width:$breakpoint-phone){
+					font-size: 2.4rem;
+				}
 			}
 			button{
 				padding: 0.4rem 1rem;

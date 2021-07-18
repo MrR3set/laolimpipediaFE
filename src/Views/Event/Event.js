@@ -185,6 +185,33 @@ function EventPage({allowEdits=false}) {
 				</>}
 			</div>
 
+			<div className="notes">			
+				{links.map((link,i)=>{
+					return <div className="note-wrapper" key={i}>
+						<p key={i} className="note">{link.name}</p>
+						{allowEdits?<button className="cta" onClick={(event)=>{deleteLink(event,i)}}>Borrar</button>:null}
+					</div>
+				})}
+				
+				{addLinks?
+					<div className="form">
+						<input name="name" placeholder="Nombre" onChange={onChangeHandlerLinks}/>
+						<button className="cta" onClick={saveLink}>guardar</button>
+					</div>
+				:null}
+				{allowEdits?<div className="controls">
+						<button className="cta" onClick={(e)=>{e.preventDefault(); setAddLink(true)}}>Añadir nota</button>
+						<button className="cta" onClick={uploadLinks}>Subir Notas</button>
+					</div>
+				:null}
+			</div>
+
+
+
+
+
+
+
 
 			<div className="content">
 				{results.length>0 || addResults
@@ -196,34 +223,7 @@ function EventPage({allowEdits=false}) {
 					<button className="cta" onClick={(e)=>{e.preventDefault(); setAddResults(true)}}>Añadir resultados</button>
 				</div>:null}
 			</div>
-
-			{/* keep just in case
-			
-			<div className="links">
-				<h1 className="title">Eventos relacionados</h1>
-					
-				{links.map((link,i)=>{
-					return <div className="link-wrapper">
-						<a to={link.path} target="_blank" key={i} className="link">{link.name}</a>
-						{allowEdits?<button className="cta" onClick={(event)=>{deleteLink(event,i)}}>Borrar</button>:null}
-					</div>
-				})}
-				
-				{addLinks?
-					<div className="form">
-						<input name="path" placeholder="Link" onChange={onChangeHandlerLinks}/>
-						<input name="name" placeholder="Nombre" onChange={onChangeHandlerLinks}/>
-						<button className="cta" onClick={saveLink}>guardar</button>
-					</div>
-				:null}
-				{allowEdits?<div className="controls">
-						<button className="cta" onClick={(e)=>{e.preventDefault(); setAddLink(true)}}>+</button>
-						<button className="cta" onClick={uploadLinks}>Subir links</button>
-					</div>
-				:null}
-			</div> */}
-
-
+		
 		</div>
 	);
 }
