@@ -36,8 +36,16 @@ function Table({results, saveResults, discardResults, allowEdits=false}) {
 					</tr>
 				</thead>
 				<tbody>
-					{data.sort((a,b) => Number(a.position) < Number(b.position) ? 1 : -1).map(({name,country, score, position},i)=>{
-						return <TableRow name={name} country={country} score={score} key={i} index={i} position={position} updateEntry={updateEntry} deleteEntry={deleteEntry} allowEdits={allowEdits}/>
+					{data.sort((a, b) => {
+						if (!b.position || !a.position || a.position === "" || b.position === "")
+							return -1
+						if (Number(a.position) > Number(b.position))
+							return 1
+						if (Number(a.position) < Number(b.position))
+							return -1
+						return 0
+					}).map(({name, country, score, position}, i) => {
+						return <TableRow name={name} country={country} score={score} key={i} index={i} position={position} updateEntry={updateEntry} deleteEntry={deleteEntry} allowEdits={allowEdits} />
 					})}
 				</tbody>
         	</table>
@@ -49,10 +57,7 @@ function Table({results, saveResults, discardResults, allowEdits=false}) {
 						<button className="cta" onClick={discardResults}>Descartar cambios</button> 
 					</div>
 				</>
-				
 			:null}
-
-			
 		</div>
     );
 }
