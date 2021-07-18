@@ -37,12 +37,24 @@ function Table({results, saveResults, discardResults, allowEdits=false}) {
 				</thead>
 				<tbody>
 					{data.sort((a, b) => {
-						if (!b.position || !a.position || a.position === "" || b.position === "")
+						// First clean all non numeric values 
+						if(typeof(a.position) === "undefined")
+							return 1	
+						
+						if(a.position === "")
+							return 1
+			
+						if(typeof(a.position) === "undefined")
 							return -1
+
+						if(b.position === "")
+							return -1
+
 						if (Number(a.position) > Number(b.position))
 							return 1
 						if (Number(a.position) < Number(b.position))
 							return -1
+
 						return 0
 					}).map(({name, country, score, position}, i) => {
 						return <TableRow name={name} country={country} score={score} key={i} index={i} position={position} updateEntry={updateEntry} deleteEntry={deleteEntry} allowEdits={allowEdits} />
