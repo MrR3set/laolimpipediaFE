@@ -15,7 +15,7 @@ const HomePageData = [
 		imageUrl:"https://images.unsplash.com/photo-1511406471420-feeac25c74c7?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=699&q=80"
 	},
 	{
-		name:"Guía Oficial La Olimpipedia JJ.OO. Tokio 2020”", 
+		name:"Guía Oficial La Olimpipedia JJ.OO. Tokio 2020", 
 		path:"/guia",
 		imageUrl:"https://images.pexels.com/photos/236937/pexels-photo-236937.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
 	},
