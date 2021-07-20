@@ -4,6 +4,7 @@ import { axiosWithAuth } from '../../Utils/axiosWithAuth';
 import React, {useEffect, useState} from 'react';
 import ReactCountryFlag from 'react-country-flag';
 import { ReactComponent as DownArrow } from '../../Assets/down.svg'
+import { ReactComponent as OlympicFlag } from '../../Assets/Olympic_flag.svg'
 
 function MedalsPage({allowEdits=false}) {
 
@@ -154,7 +155,8 @@ const TableRow = ({countryCode,country, allowEdits, gold, silver, bronce, id, up
 				{position}º
 			</td> 	
 			<td>
-				<ReactCountryFlag countryCode={countryCode} svg className="flag"/>
+				{countryCode==="CC"?<OlympicFlag/>
+				:<ReactCountryFlag countryCode={countryCode} svg className="flag"/>}
 				{country}
 			</td> 	
 

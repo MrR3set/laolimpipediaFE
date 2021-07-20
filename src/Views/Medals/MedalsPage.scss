@@ -129,9 +129,12 @@
 		
 					td{
 						padding: 0.75rem 0.5rem;
-						.flag{
-							margin-right: 5px;
-							margin-top: -4px;
+
+						svg{
+							.flag{
+								margin-right: 5px;
+								margin-top: -4px;
+							}
 						}
 		
 						input{
