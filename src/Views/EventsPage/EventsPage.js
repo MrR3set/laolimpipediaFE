@@ -28,7 +28,7 @@ function EventsPage({allowEdits=false}) {
 		}else if(today > lastDay){
 			setInitialDate(lastDay.toISOString().slice(0,10))
 		}else{
-			setInitialDate(today.toISOString(0,10))
+			setInitialDate(today.toISOString().slice(0,10))
 		}
 	},[])
 
