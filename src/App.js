@@ -36,6 +36,8 @@ function App() {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	},[])
 
+	const [openAlert,setOpenAlert] = useState(true)
+
 
 	return (!isLoading?
 		<div className="App">
@@ -65,7 +67,10 @@ function App() {
 
 			</Switch>
 			
-
+			<div className={`alert ${openAlert?"":"closed"}`}>
+				<p>Nuestra cuenta de Instagram permanece inhabilitada momentáneamente por problemas técnicos. En las próximas horas volverá a estar activa, disculpen las molestias</p>
+				<span onClick={()=>{setOpenAlert(false)}}>x</span>
+			</div>
 			<Footer></Footer>
 		</div>:<div className="loader" >
 			<Spinner/>
