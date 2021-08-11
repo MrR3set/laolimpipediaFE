@@ -67,10 +67,11 @@ function App() {
 
 			</Switch>
 			
-			<div className={`alert ${openAlert?"":"closed"}`}>
+			{/* Alert no longer needed, keep just in case
+			 <div className={`alert ${openAlert?"":"closed"}`}>
 				<p>Nuestra cuenta de Instagram permanece inhabilitada momentáneamente por problemas técnicos. En las próximas horas volverá a estar activa, disculpen las molestias</p>
 				<span onClick={()=>{setOpenAlert(false)}}>x</span>
-			</div>
+			</div> */}
 			<Footer></Footer>
 		</div>:<div className="loader" >
 			<Spinner/>
